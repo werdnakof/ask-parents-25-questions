@@ -1,0 +1,81 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "auth": {
+    "login": "Log In",
+    "signup": "Sign Up",
+    "logout": "Log Out",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "continueWithGoogle": "Continue with Google",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "landing": {
+    "title": "Know their story before the chapter closes",
+    "subtitle": "Capture your parents' life stories through meaningful questions before it's too late.",
+    "cta": "Get Started"
+  },
+  "dashboard": {
+    "title": "Your Parents",
+    "addParent": "Add a Parent",
+    "emptyState": "Start by adding a parent to capture their story.",
+    "questionsAnswered": "{count} of {total} questions answered",
+    "supportLabel": "Questions, feedback, or feature requests?",
+    "supportEmail": "askparents25questions@gmail.com"
+  },
+  "parent": {
+    "mother": "Mother",
+    "father": "Father",
+    "other": "Other",
+    "addPhoto": "Add Photo",
+    "viewStory": "View Full Story",
+    "deleteConfirm": "Are you sure you want to delete this parent? All answers will be lost."
+  },
+  "questions": {
+    "backToList": "Back to Questions",
+    "questionOf": "Question {current} of {total}",
+    "answered": "Answered",
+    "unanswered": "Not yet answered",
+    "saving": "Saving...",
+    "saved": "Saved",
+    "placeholder": "Write your answer here...",
+    "progress": "{count} of {total} answered",
+    "addQuestion": "Add Question",
+    "ourQuestions": "Our Questions",
+    "writeYourOwn": "Write Your Own",
+    "customBadge": "Custom",
+    "customPlaceholder": "Write a question you'd like to ask...",
+    "addToList": "Add to List",
+    "deleteCustom": "Delete Question",
+    "deleteConfirm": "Delete this custom question? The answer will also be deleted.",
+    "maxReached": "You've reached the maximum of 100 questions",
+    "questionAdded": "Question added!"
+  },
+  "premium": {
+    "unlock": "Unlock 75 More Questions",
+    "description": "Choose from our curated questions or write your own. Go deeper with topics like career, spirituality, and messages to future generations.",
+    "price": "$9.99 one-time",
+    "cta": "Upgrade Now",
+    "customFeature": "Plus: Add your own custom questions"
+  },
+  "summary": {
+    "title": "{name}'s Story",
+    "noAnswers": "No questions answered yet.",
+    "print": "Print Story"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "中文",
+    "es": "Español"
+  }
+}

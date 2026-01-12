@@ -2,25 +2,29 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Olive color palette */
+  --color-olive-50: #f4f5f2;
+  --color-olive-100: #e6e9e2;
+  --color-olive-200: #cdd3c6;
+  --color-olive-300: #adb7a2;
+  --color-olive-400: #8a9878;
+  --color-olive-500: #6b7c5e;
+  --color-olive-600: #54634a;
+  --color-olive-700: #434f3c;
+  --color-olive-800: #384133;
+  --color-olive-900: #30372c;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }

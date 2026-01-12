@@ -1,0 +1,81 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个"
+  },
+  "auth": {
+    "login": "登录",
+    "signup": "注册",
+    "logout": "退出",
+    "email": "邮箱",
+    "password": "密码",
+    "forgotPassword": "忘记密码？",
+    "continueWithGoogle": "使用Google登录",
+    "noAccount": "没有账号？",
+    "hasAccount": "已有账号？"
+  },
+  "landing": {
+    "title": "在故事结束前，了解他们的人生",
+    "subtitle": "通过有意义的问题，记录父母的人生故事。",
+    "cta": "开始使用"
+  },
+  "dashboard": {
+    "title": "我的父母",
+    "addParent": "添加父母",
+    "emptyState": "添加一位父母，开始记录他们的故事。",
+    "questionsAnswered": "已回答 {count} / {total} 个问题",
+    "supportLabel": "有问题、反馈或功能建议？",
+    "supportEmail": "askparents25questions@gmail.com"
+  },
+  "parent": {
+    "mother": "母亲",
+    "father": "父亲",
+    "other": "其他",
+    "addPhoto": "添加照片",
+    "viewStory": "查看完整故事",
+    "deleteConfirm": "确定要删除吗？所有回答都将丢失。"
+  },
+  "questions": {
+    "backToList": "返回问题列表",
+    "questionOf": "第 {current} 题，共 {total} 题",
+    "answered": "已回答",
+    "unanswered": "未回答",
+    "saving": "保存中...",
+    "saved": "已保存",
+    "placeholder": "在这里写下答案...",
+    "progress": "已回答 {count} / {total}",
+    "addQuestion": "添加问题",
+    "ourQuestions": "推荐问题",
+    "writeYourOwn": "自定义问题",
+    "customBadge": "自定义",
+    "customPlaceholder": "写下你想问的问题...",
+    "addToList": "添加到列表",
+    "deleteCustom": "删除问题",
+    "deleteConfirm": "删除这个自定义问题？答案也会被删除。",
+    "maxReached": "已达到100个问题的上限",
+    "questionAdded": "问题已添加！"
+  },
+  "premium": {
+    "unlock": "解锁更多75个问题",
+    "description": "从我们的问题中选择，或自定义你的问题。深入了解他们的职业、信仰、给后代的寄语等。",
+    "price": "一次性付费 $9.99",
+    "cta": "立即升级",
+    "customFeature": "还可以添加自定义问题"
+  },
+  "summary": {
+    "title": "{name}的故事",
+    "noAnswers": "还没有回答任何问题。",
+    "print": "打印故事"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "中文",
+    "es": "Español"
+  }
+}

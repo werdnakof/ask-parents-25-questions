@@ -1,0 +1,81 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "continueWithGoogle": "Continuar con Google",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?"
+  },
+  "landing": {
+    "title": "Conoce su historia antes de que termine el capítulo",
+    "subtitle": "Captura las historias de vida de tus padres a través de preguntas significativas.",
+    "cta": "Comenzar"
+  },
+  "dashboard": {
+    "title": "Tus Padres",
+    "addParent": "Agregar un Padre",
+    "emptyState": "Comienza agregando un padre para capturar su historia.",
+    "questionsAnswered": "{count} de {total} preguntas respondidas",
+    "supportLabel": "¿Preguntas, comentarios o sugerencias?",
+    "supportEmail": "askparents25questions@gmail.com"
+  },
+  "parent": {
+    "mother": "Madre",
+    "father": "Padre",
+    "other": "Otro",
+    "addPhoto": "Agregar Foto",
+    "viewStory": "Ver Historia Completa",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar? Se perderán todas las respuestas."
+  },
+  "questions": {
+    "backToList": "Volver a Preguntas",
+    "questionOf": "Pregunta {current} de {total}",
+    "answered": "Respondida",
+    "unanswered": "Sin responder",
+    "saving": "Guardando...",
+    "saved": "Guardado",
+    "placeholder": "Escribe tu respuesta aquí...",
+    "progress": "{count} de {total} respondidas",
+    "addQuestion": "Agregar Pregunta",
+    "ourQuestions": "Nuestras Preguntas",
+    "writeYourOwn": "Escribe la Tuya",
+    "customBadge": "Personalizada",
+    "customPlaceholder": "Escribe una pregunta que te gustaría hacer...",
+    "addToList": "Agregar a la Lista",
+    "deleteCustom": "Eliminar Pregunta",
+    "deleteConfirm": "¿Eliminar esta pregunta personalizada? La respuesta también se eliminará.",
+    "maxReached": "Has alcanzado el máximo de 100 preguntas",
+    "questionAdded": "¡Pregunta agregada!"
+  },
+  "premium": {
+    "unlock": "Desbloquear 75 Preguntas Más",
+    "description": "Elige de nuestras preguntas o escribe las tuyas. Profundiza con temas como carrera, espiritualidad y mensajes para futuras generaciones.",
+    "price": "$9.99 único pago",
+    "cta": "Mejorar Ahora",
+    "customFeature": "Además: Agrega tus propias preguntas"
+  },
+  "summary": {
+    "title": "La Historia de {name}",
+    "noAnswers": "Aún no hay preguntas respondidas.",
+    "print": "Imprimir Historia"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "中文",
+    "es": "Español"
+  }
+}
