@@ -120,6 +120,7 @@
   "dashboard": {
     "title": "您的父母",
     "addParent": "添加父母",
+    "emptyStateTitle": "还没有添加父母",
     "emptyState": "从添加一位父母开始，记录他们的故事。",
     "questionsAnswered": "已回答 {count}/{total} 个问题",
     "supportLabel": "有问题、反馈或功能建议？",

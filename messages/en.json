@@ -120,6 +120,7 @@
   "dashboard": {
     "title": "Your Parents",
     "addParent": "Add a Parent",
+    "emptyStateTitle": "No parents added yet",
     "emptyState": "Start by adding a parent to capture their story.",
     "questionsAnswered": "{count} of {total} questions answered",
     "supportLabel": "Questions, feedback, or feature requests?",
