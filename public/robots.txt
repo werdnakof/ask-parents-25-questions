@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://parent-stories.vercel.app/sitemap.xml
+
+# Disallow protected routes
+Disallow: /*/dashboard
+Disallow: /*/parent/
+Disallow: /api/

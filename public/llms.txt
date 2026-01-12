@@ -1,0 +1,36 @@
+# Parent Stories - LLMs.txt
+# https://llmstxt.org/
+
+> Parent Stories helps people capture their parents' life stories through meaningful questions before it's too late.
+
+## About
+
+Parent Stories is a web application that provides thoughtfully crafted questions to help you document your parents' memories, experiences, and life wisdom. The app supports multiple languages (English, Chinese, Spanish) and offers both free and premium tiers.
+
+## Features
+
+- 100 curated questions covering childhood, family, career, love, and life lessons
+- Support for multiple parents/family members
+- Auto-save functionality
+- Multi-language support (English, Chinese, Spanish)
+- Print-friendly story summaries
+- Custom question creation (Premium)
+
+## Pricing
+
+- Free: 25 curated questions, unlimited parents, auto-save
+- Premium ($9.99 one-time): All 100 questions, custom questions, priority support
+
+## Contact
+
+Email: askparents25questions@gmail.com
+Website: https://parent-stories.vercel.app
+
+## Tech Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Firebase (Auth, Firestore, Storage)
+- Tailwind CSS
+- Stripe for payments
+- next-intl for internationalization
