@@ -33,7 +33,89 @@
   "landing": {
     "title": "Know their story before the chapter closes",
     "subtitle": "Capture your parents' life stories through meaningful questions before it's too late.",
-    "cta": "Get Started"
+    "cta": "Get Started",
+    "getStarted": "Get Started",
+    "login": "Log In",
+    "freeToStart": "Free to start. No credit card required.",
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Add a Parent",
+        "description": "Create a profile for your mom, dad, or any loved one whose story you want to capture."
+      },
+      "step2": {
+        "title": "Ask Questions",
+        "description": "Choose from 100 thoughtfully crafted questions about their childhood, career, love, and life lessons."
+      },
+      "step3": {
+        "title": "Save Their Story",
+        "description": "Record their answers and preserve their memories for generations to come."
+      }
+    },
+    "sampleQuestions": {
+      "title": "Sample Questions",
+      "subtitle": "Thoughtful questions designed to unlock memories and stories you've never heard.",
+      "q1": "What is your earliest childhood memory?",
+      "q2": "How did you meet Mom/Dad?",
+      "q3": "What was your first job and what did you learn from it?",
+      "q4": "What's the best advice your parents gave you?",
+      "q5": "What moment in your life are you most proud of?",
+      "q6": "What do you wish you had done differently?",
+      "andMore": "...and 94 more questions covering childhood, family, career, love, and life wisdom."
+    },
+    "pricing": {
+      "title": "Simple Pricing",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "feature1": "25 curated questions",
+        "feature2": "Unlimited parents",
+        "feature3": "Auto-save answers",
+        "cta": "Start Free"
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "$9.99",
+        "oneTime": "One-time payment",
+        "badge": "Best Value",
+        "feature1": "All 100 questions",
+        "feature2": "Add custom questions",
+        "feature3": "Priority support",
+        "feature4": "Future features included",
+        "cta": "Upgrade to Premium"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "Is my data private and secure?",
+        "answer": "Yes, absolutely. Your stories are private and only accessible to you. We use industry-standard encryption and never share your data with third parties."
+      },
+      "q2": {
+        "question": "Can I add multiple parents or family members?",
+        "answer": "Yes! You can add unlimited parents or loved ones, even on the free plan. Each person gets their own set of questions and answers."
+      },
+      "q3": {
+        "question": "What happens if I don't finish all the questions?",
+        "answer": "No pressure! Your answers are auto-saved as you go. Come back anytime to continue where you left off."
+      },
+      "q4": {
+        "question": "Can I export or print the stories?",
+        "answer": "Yes, you can view and print a beautiful summary of all answered questions for each parent."
+      },
+      "q5": {
+        "question": "What if I want to ask my own questions?",
+        "answer": "Premium users can add their own custom questions. It's a great way to ask something specific to your family's history."
+      }
+    },
+    "finalCta": {
+      "title": "Don't wait until it's too late",
+      "subtitle": "Every day is a chance to learn something new about the people who shaped your life."
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "contact": "Contact Us"
+    }
   },
   "dashboard": {
     "title": "Your Parents",

@@ -5,7 +5,7 @@
     "cancel": "Cancelar",
     "delete": "Eliminar",
     "edit": "Editar",
-    "back": "Volver",
+    "back": "Atrás",
     "next": "Siguiente",
     "previous": "Anterior"
   },
@@ -32,15 +32,97 @@
   },
   "landing": {
     "title": "Conoce su historia antes de que termine el capítulo",
-    "subtitle": "Captura las historias de vida de tus padres a través de preguntas significativas.",
-    "cta": "Comenzar"
+    "subtitle": "Captura las historias de vida de tus padres a través de preguntas significativas antes de que sea demasiado tarde.",
+    "cta": "Comenzar",
+    "getStarted": "Comenzar",
+    "login": "Iniciar Sesión",
+    "freeToStart": "Gratis para comenzar. No se requiere tarjeta de crédito.",
+    "howItWorks": {
+      "title": "Cómo Funciona",
+      "step1": {
+        "title": "Agrega un Padre",
+        "description": "Crea un perfil para tu mamá, papá o cualquier ser querido cuya historia quieras capturar."
+      },
+      "step2": {
+        "title": "Haz Preguntas",
+        "description": "Elige entre 100 preguntas cuidadosamente elaboradas sobre su infancia, carrera, amor y lecciones de vida."
+      },
+      "step3": {
+        "title": "Guarda su Historia",
+        "description": "Registra sus respuestas y preserva sus recuerdos para las generaciones venideras."
+      }
+    },
+    "sampleQuestions": {
+      "title": "Preguntas de Ejemplo",
+      "subtitle": "Preguntas reflexivas diseñadas para desbloquear recuerdos e historias que nunca has escuchado.",
+      "q1": "¿Cuál es tu recuerdo más antiguo de la infancia?",
+      "q2": "¿Cómo conociste a mamá/papá?",
+      "q3": "¿Cuál fue tu primer trabajo y qué aprendiste de él?",
+      "q4": "¿Cuál es el mejor consejo que te dieron tus padres?",
+      "q5": "¿De qué momento de tu vida estás más orgulloso?",
+      "q6": "¿Qué hubieras hecho diferente?",
+      "andMore": "...y 94 preguntas más sobre infancia, familia, carrera, amor y sabiduría de vida."
+    },
+    "pricing": {
+      "title": "Precios Simples",
+      "free": {
+        "name": "Gratis",
+        "price": "$0",
+        "feature1": "25 preguntas seleccionadas",
+        "feature2": "Padres ilimitados",
+        "feature3": "Guardado automático",
+        "cta": "Comenzar Gratis"
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "$9.99",
+        "oneTime": "Pago único",
+        "badge": "Mejor Valor",
+        "feature1": "Las 100 preguntas",
+        "feature2": "Agrega preguntas personalizadas",
+        "feature3": "Soporte prioritario",
+        "feature4": "Futuras funciones incluidas",
+        "cta": "Actualizar a Premium"
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "q1": {
+        "question": "¿Mis datos son privados y seguros?",
+        "answer": "Sí, absolutamente. Tus historias son privadas y solo accesibles para ti. Usamos encriptación estándar de la industria y nunca compartimos tus datos con terceros."
+      },
+      "q2": {
+        "question": "¿Puedo agregar múltiples padres o familiares?",
+        "answer": "¡Sí! Puedes agregar padres o seres queridos ilimitados, incluso en el plan gratuito. Cada persona tiene su propio conjunto de preguntas y respuestas."
+      },
+      "q3": {
+        "question": "¿Qué pasa si no termino todas las preguntas?",
+        "answer": "¡Sin presión! Tus respuestas se guardan automáticamente mientras escribes. Vuelve cuando quieras para continuar donde lo dejaste."
+      },
+      "q4": {
+        "question": "¿Puedo exportar o imprimir las historias?",
+        "answer": "Sí, puedes ver e imprimir un hermoso resumen de todas las preguntas respondidas para cada padre."
+      },
+      "q5": {
+        "question": "¿Qué pasa si quiero hacer mis propias preguntas?",
+        "answer": "Los usuarios Premium pueden agregar sus propias preguntas personalizadas. Es una excelente manera de preguntar algo específico de la historia de tu familia."
+      }
+    },
+    "finalCta": {
+      "title": "No esperes hasta que sea demasiado tarde",
+      "subtitle": "Cada día es una oportunidad para aprender algo nuevo sobre las personas que moldearon tu vida."
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados.",
+      "contact": "Contáctanos"
+    }
   },
   "dashboard": {
     "title": "Tus Padres",
     "addParent": "Agregar un Padre",
     "emptyState": "Comienza agregando un padre para capturar su historia.",
     "questionsAnswered": "{count} de {total} preguntas respondidas",
-    "supportLabel": "¿Preguntas, comentarios o sugerencias?",
+    "supportLabel": "¿Preguntas, comentarios o solicitudes de funciones?",
     "supportEmail": "askparents25questions@gmail.com"
   },
   "parent": {
@@ -49,7 +131,7 @@
     "other": "Otro",
     "addPhoto": "Agregar Foto",
     "viewStory": "Ver Historia Completa",
-    "deleteConfirm": "¿Estás seguro de que quieres eliminar? Se perderán todas las respuestas."
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar este padre? Todas las respuestas se perderán."
   },
   "questions": {
     "backToList": "Volver a Preguntas",
@@ -72,11 +154,11 @@
     "questionAdded": "¡Pregunta agregada!"
   },
   "premium": {
-    "unlock": "Desbloquear 75 Preguntas Más",
-    "description": "Elige de nuestras preguntas o escribe las tuyas. Profundiza con temas como carrera, espiritualidad y mensajes para futuras generaciones.",
-    "price": "$9.99 único pago",
-    "cta": "Mejorar Ahora",
-    "customFeature": "Además: Agrega tus propias preguntas"
+    "unlock": "Desbloquea 75 Preguntas Más",
+    "description": "Elige entre nuestras preguntas seleccionadas o escribe las tuyas. Profundiza en temas como carrera, espiritualidad y mensajes para futuras generaciones.",
+    "price": "$9.99 pago único",
+    "cta": "Actualizar Ahora",
+    "customFeature": "Además: Agrega tus propias preguntas personalizadas"
   },
   "summary": {
     "title": "La Historia de {name}",

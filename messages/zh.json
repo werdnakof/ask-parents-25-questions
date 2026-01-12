@@ -32,14 +32,96 @@
   },
   "landing": {
     "title": "在故事结束前，了解他们的人生",
-    "subtitle": "通过有意义的问题，记录父母的人生故事。",
-    "cta": "开始使用"
+    "subtitle": "在来不及之前，通过有意义的问题记录父母的人生故事。",
+    "cta": "开始使用",
+    "getStarted": "开始使用",
+    "login": "登录",
+    "freeToStart": "免费开始，无需信用卡。",
+    "howItWorks": {
+      "title": "如何使用",
+      "step1": {
+        "title": "添加父母",
+        "description": "为您的父亲、母亲或任何您想记录故事的亲人创建档案。"
+      },
+      "step2": {
+        "title": "提问",
+        "description": "从100个精心设计的问题中选择，涵盖童年、事业、爱情和人生感悟。"
+      },
+      "step3": {
+        "title": "保存故事",
+        "description": "记录他们的回答，为后代保存珍贵的回忆。"
+      }
+    },
+    "sampleQuestions": {
+      "title": "示例问题",
+      "subtitle": "精心设计的问题，帮助您发现从未听过的回忆和故事。",
+      "q1": "您最早的童年记忆是什么？",
+      "q2": "您是怎么认识爸爸/妈妈的？",
+      "q3": "您的第一份工作是什么？从中学到了什么？",
+      "q4": "您父母给您的最好建议是什么？",
+      "q5": "您人生中最自豪的时刻是什么？",
+      "q6": "如果可以重来，您会做出什么不同的选择？",
+      "andMore": "...还有94个问题，涵盖童年、家庭、事业、爱情和人生智慧。"
+    },
+    "pricing": {
+      "title": "简单定价",
+      "free": {
+        "name": "免费版",
+        "price": "¥0",
+        "feature1": "25个精选问题",
+        "feature2": "无限添加父母",
+        "feature3": "自动保存答案",
+        "cta": "免费开始"
+      },
+      "premium": {
+        "name": "高级版",
+        "price": "¥68",
+        "oneTime": "一次性付款",
+        "badge": "最超值",
+        "feature1": "全部100个问题",
+        "feature2": "添加自定义问题",
+        "feature3": "优先支持",
+        "feature4": "未来功能免费",
+        "cta": "升级到高级版"
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "q1": {
+        "question": "我的数据是否私密和安全？",
+        "answer": "是的，绝对安全。您的故事是私密的，只有您可以访问。我们使用行业标准加密，绝不与第三方共享您的数据。"
+      },
+      "q2": {
+        "question": "我可以添加多个父母或家人吗？",
+        "answer": "可以！即使是免费版，您也可以添加无限数量的父母或亲人。每个人都有自己的问题和答案集。"
+      },
+      "q3": {
+        "question": "如果我没有完成所有问题怎么办？",
+        "answer": "没有压力！您的答案会在输入时自动保存。随时回来继续之前的内容。"
+      },
+      "q4": {
+        "question": "我可以导出或打印故事吗？",
+        "answer": "可以，您可以查看并打印每位父母所有已回答问题的精美摘要。"
+      },
+      "q5": {
+        "question": "如果我想问自己的问题怎么办？",
+        "answer": "高级用户可以添加自己的自定义问题。这是询问与您家族历史相关的特定问题的好方法。"
+      }
+    },
+    "finalCta": {
+      "title": "不要等到来不及",
+      "subtitle": "每一天都是了解塑造您人生的人的新机会。"
+    },
+    "footer": {
+      "rights": "保留所有权利。",
+      "contact": "联系我们"
+    }
   },
   "dashboard": {
-    "title": "我的父母",
+    "title": "您的父母",
     "addParent": "添加父母",
-    "emptyState": "添加一位父母，开始记录他们的故事。",
-    "questionsAnswered": "已回答 {count} / {total} 个问题",
+    "emptyState": "从添加一位父母开始，记录他们的故事。",
+    "questionsAnswered": "已回答 {count}/{total} 个问题",
     "supportLabel": "有问题、反馈或功能建议？",
     "supportEmail": "askparents25questions@gmail.com"
   },
@@ -49,34 +131,34 @@
     "other": "其他",
     "addPhoto": "添加照片",
     "viewStory": "查看完整故事",
-    "deleteConfirm": "确定要删除吗？所有回答都将丢失。"
+    "deleteConfirm": "确定要删除这位父母吗？所有答案都将丢失。"
   },
   "questions": {
     "backToList": "返回问题列表",
-    "questionOf": "第 {current} 题，共 {total} 题",
+    "questionOf": "第 {current}/{total} 个问题",
     "answered": "已回答",
     "unanswered": "未回答",
     "saving": "保存中...",
     "saved": "已保存",
-    "placeholder": "在这里写下答案...",
-    "progress": "已回答 {count} / {total}",
+    "placeholder": "在这里写下您的答案...",
+    "progress": "已回答 {count}/{total}",
     "addQuestion": "添加问题",
-    "ourQuestions": "推荐问题",
+    "ourQuestions": "我们的问题",
     "writeYourOwn": "自定义问题",
     "customBadge": "自定义",
-    "customPlaceholder": "写下你想问的问题...",
+    "customPlaceholder": "写一个您想问的问题...",
     "addToList": "添加到列表",
     "deleteCustom": "删除问题",
     "deleteConfirm": "删除这个自定义问题？答案也会被删除。",
-    "maxReached": "已达到100个问题的上限",
+    "maxReached": "您已达到100个问题的上限",
     "questionAdded": "问题已添加！"
   },
   "premium": {
-    "unlock": "解锁更多75个问题",
-    "description": "从我们的问题中选择，或自定义你的问题。深入了解他们的职业、信仰、给后代的寄语等。",
-    "price": "一次性付费 $9.99",
+    "unlock": "解锁75个更多问题",
+    "description": "从我们精选的问题中选择或自己编写。深入探讨事业、精神信仰和给后代的寄语等话题。",
+    "price": "¥68 一次性付款",
     "cta": "立即升级",
-    "customFeature": "还可以添加自定义问题"
+    "customFeature": "额外功能：添加您自己的自定义问题"
   },
   "summary": {
     "title": "{name}的故事",

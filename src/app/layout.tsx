@@ -8,8 +8,53 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Parent Stories",
-  description: "Know their story before the chapter closes.",
+  title: {
+    default: "Parent Stories - Capture Your Parents' Life Stories",
+    template: "%s | Parent Stories",
+  },
+  description: "Know their story before the chapter closes. Capture your parents' life stories through meaningful questions before it's too late.",
+  keywords: ["parent stories", "family history", "life stories", "interview questions", "family memories", "genealogy", "family legacy"],
+  authors: [{ name: "Parent Stories" }],
+  creator: "Parent Stories",
+  publisher: "Parent Stories",
+  metadataBase: new URL("https://parent-stories.vercel.app"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://parent-stories.vercel.app",
+    siteName: "Parent Stories",
+    title: "Parent Stories - Capture Your Parents' Life Stories",
+    description: "Know their story before the chapter closes. Capture your parents' life stories through meaningful questions before it's too late.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Parent Stories - Capture Your Parents' Life Stories",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Parent Stories - Capture Your Parents' Life Stories",
+    description: "Know their story before the chapter closes. Capture your parents' life stories through meaningful questions before it's too late.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add Google Search Console verification if needed
+    // google: "verification-code",
+  },
 };
 
 export default function RootLayout({
