@@ -15,10 +15,20 @@
     "logout": "Cerrar Sesión",
     "email": "Correo electrónico",
     "password": "Contraseña",
+    "name": "Nombre",
+    "confirmPassword": "Confirmar Contraseña",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "continueWithGoogle": "Continuar con Google",
     "noAccount": "¿No tienes cuenta?",
-    "hasAccount": "¿Ya tienes cuenta?"
+    "hasAccount": "¿Ya tienes cuenta?",
+    "loading": "Cargando...",
+    "resetPassword": "Restablecer Contraseña",
+    "resetPasswordDescription": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+    "sendResetLink": "Enviar Enlace",
+    "checkEmail": "Revisa tu correo",
+    "resetEmailSent": "Hemos enviado un enlace para restablecer tu contraseña.",
+    "backToLogin": "Volver a iniciar sesión",
+    "rememberPassword": "¿Recuerdas tu contraseña?"
   },
   "landing": {
     "title": "Conoce su historia antes de que termine el capítulo",

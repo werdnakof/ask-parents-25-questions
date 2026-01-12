@@ -15,10 +15,20 @@
     "logout": "Log Out",
     "email": "Email",
     "password": "Password",
+    "name": "Name",
+    "confirmPassword": "Confirm Password",
     "forgotPassword": "Forgot password?",
     "continueWithGoogle": "Continue with Google",
     "noAccount": "Don't have an account?",
-    "hasAccount": "Already have an account?"
+    "hasAccount": "Already have an account?",
+    "loading": "Loading...",
+    "resetPassword": "Reset Password",
+    "resetPasswordDescription": "Enter your email and we'll send you a link to reset your password.",
+    "sendResetLink": "Send Reset Link",
+    "checkEmail": "Check your email",
+    "resetEmailSent": "We've sent a password reset link to your email.",
+    "backToLogin": "Back to login",
+    "rememberPassword": "Remember your password?"
   },
   "landing": {
     "title": "Know their story before the chapter closes",

@@ -1,0 +1,4 @@
+'use client';
+
+// Re-export useAuth from AuthProvider for convenience
+export { useAuth } from '@/components/auth/AuthProvider';
