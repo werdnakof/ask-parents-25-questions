@@ -7,8 +7,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { SupportFooter } from '@/components/ui/SupportFooter';
-import { ParentCard, Parent } from '@/components/dashboard/ParentCard';
+import { ParentCard } from '@/components/dashboard/ParentCard';
 import { Button } from '@/components/ui';
+import { useParents } from '@/lib/hooks/useParents';
 
 export default function DashboardPage() {
   const t = useTranslations('dashboard');
@@ -16,10 +17,7 @@ export default function DashboardPage() {
   const locale = useLocale();
   const { user } = useAuth();
   const router = useRouter();
-
-  // TODO: Replace with actual data from useParents hook in Phase 11
-  const parents: Parent[] = [];
-  const isLoading = false;
+  const { parents, loading: isLoading, error } = useParents();
 
   const handleSignOut = async () => {
     await signOut();

@@ -132,7 +132,13 @@
     "other": "Otro",
     "addPhoto": "Agregar Foto",
     "viewStory": "Ver Historia Completa",
-    "deleteConfirm": "¿Estás seguro de que quieres eliminar este padre? Todas las respuestas se perderán."
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar este padre? Todas las respuestas se perderán.",
+    "addParentTitle": "Agregar un Padre",
+    "addParentDescription": "Agrega a alguien cuya historia quieras capturar.",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Ingresa su nombre",
+    "relationshipLabel": "Relación",
+    "addParentButton": "Agregar"
   },
   "questions": {
     "backToList": "Volver a Preguntas",

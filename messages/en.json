@@ -132,7 +132,13 @@
     "other": "Other",
     "addPhoto": "Add Photo",
     "viewStory": "View Full Story",
-    "deleteConfirm": "Are you sure you want to delete this parent? All answers will be lost."
+    "deleteConfirm": "Are you sure you want to delete this parent? All answers will be lost.",
+    "addParentTitle": "Add a Parent",
+    "addParentDescription": "Add someone whose story you want to capture.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter their name",
+    "relationshipLabel": "Relationship",
+    "addParentButton": "Add Parent"
   },
   "questions": {
     "backToList": "Back to Questions",

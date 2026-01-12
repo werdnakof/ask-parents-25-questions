@@ -132,7 +132,13 @@
     "other": "其他",
     "addPhoto": "添加照片",
     "viewStory": "查看完整故事",
-    "deleteConfirm": "确定要删除这位父母吗？所有答案都将丢失。"
+    "deleteConfirm": "确定要删除这位父母吗？所有答案都将丢失。",
+    "addParentTitle": "添加父母",
+    "addParentDescription": "添加您想记录故事的亲人。",
+    "nameLabel": "姓名",
+    "namePlaceholder": "输入他们的姓名",
+    "relationshipLabel": "关系",
+    "addParentButton": "添加"
   },
   "questions": {
     "backToList": "返回问题列表",

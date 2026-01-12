@@ -8,7 +8,7 @@ export interface Parent {
   id: string;
   name: string;
   relationship: 'mother' | 'father' | 'other';
-  photoUrl?: string;
+  photoUrl?: string | null;
   answeredCount: number;
   totalQuestions: number;
   createdAt: Date;
