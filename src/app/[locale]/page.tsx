@@ -18,19 +18,19 @@ export default async function Home({ params }: Props) {
       <div className="min-h-screen bg-white">
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <span className="text-xl font-semibold text-gray-900">Parent Stories</span>
-            <div className="flex items-center gap-4">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <span className="text-lg sm:text-xl font-semibold text-gray-900">Parent Stories</span>
+            <div className="flex items-center gap-2 sm:gap-4">
               <LanguageSwitcher />
               <Link
                 href={`/${locale}/login`}
-                className="text-gray-600 hover:text-gray-900 text-sm font-medium"
+                className="hidden sm:inline-block text-gray-600 hover:text-gray-900 text-sm font-medium"
               >
                 {t('login')}
               </Link>
               <Link
                 href={`/${locale}/signup`}
-                className="bg-olive-500 hover:bg-olive-600 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors"
+                className="bg-olive-500 hover:bg-olive-600 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition-colors min-h-[44px] flex items-center"
               >
                 {t('getStarted')}
               </Link>
