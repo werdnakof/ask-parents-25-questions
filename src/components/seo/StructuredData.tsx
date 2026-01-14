@@ -1,16 +1,18 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
 
-import { useTranslations } from 'next-intl';
+type Props = {
+  locale: string;
+};
 
-export function StructuredData() {
-  const t = useTranslations('landing');
+export async function StructuredData({ locale }: Props) {
+  const t = await getTranslations({ locale, namespace: 'landing' });
 
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Parent Stories',
     description: t('subtitle'),
-    url: 'https://parent-stories.vercel.app',
+    url: 'https://ask-parents-25-questions.vercel.app',
     applicationCategory: 'LifestyleApplication',
     operatingSystem: 'Web',
     offers: [

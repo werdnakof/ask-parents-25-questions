@@ -24,7 +24,7 @@ Parent Stories is a web application that provides thoughtfully crafted questions
 ## Contact
 
 Email: askparents25questions@gmail.com
-Website: https://parent-stories.vercel.app
+Website: https://ask-parents-25-questions.vercel.app
 
 ## Tech Stack
 

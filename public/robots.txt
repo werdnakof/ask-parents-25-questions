@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://parent-stories.vercel.app/sitemap.xml
+Sitemap: https://ask-parents-25-questions.vercel.app/sitemap.xml
 
 # Disallow protected routes
 Disallow: /*/dashboard

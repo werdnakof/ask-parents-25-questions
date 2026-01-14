@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Parent Stories" }],
   creator: "Parent Stories",
   publisher: "Parent Stories",
-  metadataBase: new URL("https://parent-stories.vercel.app"),
+  metadataBase: new URL("https://ask-parents-25-questions.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://parent-stories.vercel.app",
+    url: "https://ask-parents-25-questions.vercel.app",
     siteName: "Parent Stories",
     title: "Parent Stories - Capture Your Parents' Life Stories",
     description: "Know their story before the chapter closes. Capture your parents' life stories through meaningful questions before it's too late.",

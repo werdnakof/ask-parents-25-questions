@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = 'https://parent-stories.vercel.app';
+const baseUrl = 'https://ask-parents-25-questions.vercel.app';
 const locales = ['en', 'zh', 'es'];
 
 export default function sitemap(): MetadataRoute.Sitemap {

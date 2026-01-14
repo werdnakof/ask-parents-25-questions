@@ -1,17 +1,20 @@
-'use client';
-
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { StructuredData } from '@/components/seo/StructuredData';
 
-export default function Home() {
-  const t = useTranslations('landing');
-  const locale = useLocale();
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('landing');
 
   return (
     <>
-      <StructuredData />
+      <StructuredData locale={locale} />
       <div className="min-h-screen bg-white">
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
