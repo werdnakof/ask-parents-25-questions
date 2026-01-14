@@ -167,6 +167,18 @@
     "cta": "Upgrade Now",
     "customFeature": "Plus: Add your own custom questions"
   },
+  "payment": {
+    "successTitle": "Payment Successful!",
+    "successDescription": "Thank you for upgrading to Premium. You now have access to all 100 questions and can add your own custom questions.",
+    "unlocked": "What you've unlocked:",
+    "feature1": "All 100 curated questions",
+    "feature2": "Add your own custom questions",
+    "redirecting": "Redirecting to dashboard in {seconds} seconds...",
+    "goToDashboard": "Go to Dashboard",
+    "cancelledTitle": "Payment Cancelled",
+    "cancelledDescription": "Your payment was cancelled. No charges were made to your account.",
+    "tryAgainLater": "You can upgrade anytime from the question list."
+  },
   "summary": {
     "title": "{name}'s Story",
     "noAnswers": "No questions answered yet.",

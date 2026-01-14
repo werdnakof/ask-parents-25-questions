@@ -167,6 +167,18 @@
     "cta": "Actualizar Ahora",
     "customFeature": "Además: Agrega tus propias preguntas personalizadas"
   },
+  "payment": {
+    "successTitle": "¡Pago Exitoso!",
+    "successDescription": "Gracias por actualizar a Premium. Ahora tienes acceso a las 100 preguntas y puedes agregar tus propias preguntas personalizadas.",
+    "unlocked": "Lo que has desbloqueado:",
+    "feature1": "Las 100 preguntas seleccionadas",
+    "feature2": "Agrega tus propias preguntas personalizadas",
+    "redirecting": "Redirigiendo al panel en {seconds} segundos...",
+    "goToDashboard": "Ir al Panel",
+    "cancelledTitle": "Pago Cancelado",
+    "cancelledDescription": "Tu pago fue cancelado. No se realizó ningún cargo a tu cuenta.",
+    "tryAgainLater": "Puedes actualizar en cualquier momento desde la lista de preguntas."
+  },
   "summary": {
     "title": "La Historia de {name}",
     "noAnswers": "Aún no hay preguntas respondidas.",

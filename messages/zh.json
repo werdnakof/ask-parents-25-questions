@@ -167,6 +167,18 @@
     "cta": "立即升级",
     "customFeature": "额外功能：添加您自己的自定义问题"
   },
+  "payment": {
+    "successTitle": "支付成功！",
+    "successDescription": "感谢您升级到高级版。现在您可以访问全部100个问题，并可以添加自己的自定义问题。",
+    "unlocked": "您已解锁：",
+    "feature1": "全部100个精选问题",
+    "feature2": "添加您自己的自定义问题",
+    "redirecting": "{seconds}秒后跳转到仪表板...",
+    "goToDashboard": "前往仪表板",
+    "cancelledTitle": "支付已取消",
+    "cancelledDescription": "您的支付已取消。您的账户未被扣款。",
+    "tryAgainLater": "您可以随时从问题列表中升级。"
+  },
   "summary": {
     "title": "{name}的故事",
     "noAnswers": "还没有回答任何问题。",
