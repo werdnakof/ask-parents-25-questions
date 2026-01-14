@@ -10,17 +10,17 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-lato);
 
-  /* Olive color palette */
-  --color-olive-50: #f4f5f2;
-  --color-olive-100: #e6e9e2;
-  --color-olive-200: #cdd3c6;
-  --color-olive-300: #adb7a2;
-  --color-olive-400: #8a9878;
-  --color-olive-500: #6b7c5e;
-  --color-olive-600: #54634a;
-  --color-olive-700: #434f3c;
-  --color-olive-800: #384133;
-  --color-olive-900: #30372c;
+  /* Olive color palette - based on #87a96b (asparagus green) */
+  --color-olive-50: #f5f7f2;
+  --color-olive-100: #e8ede2;
+  --color-olive-200: #d0dbc4;
+  --color-olive-300: #b4c6a2;
+  --color-olive-400: #9db887;
+  --color-olive-500: #87a96b;
+  --color-olive-600: #6d8f54;
+  --color-olive-700: #587545;
+  --color-olive-800: #475e38;
+  --color-olive-900: #3a4d2e;
 }
 
 body {

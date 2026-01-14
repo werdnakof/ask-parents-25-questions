@@ -120,7 +120,7 @@
   },
   "dashboard": {
     "title": "Tus Padres",
-    "addParent": "Agregar un Padre",
+    "addParent": "Agregar",
     "emptyStateTitle": "Aún no hay padres agregados",
     "emptyState": "Comienza agregando un padre para capturar su historia.",
     "questionsAnswered": "{count} de {total} preguntas respondidas",

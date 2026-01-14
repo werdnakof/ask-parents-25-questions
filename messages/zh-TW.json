@@ -120,7 +120,7 @@
   },
   "dashboard": {
     "title": "您的父母",
-    "addParent": "新增父母",
+    "addParent": "新增",
     "emptyStateTitle": "還沒有新增父母",
     "emptyState": "從新增一位父母開始，記錄他們的故事。",
     "questionsAnswered": "已回答 {count}/{total} 個問題",
