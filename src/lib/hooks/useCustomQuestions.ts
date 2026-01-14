@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { usePremiumStatus } from './usePremiumStatus';
 import {
   addCustomQuestion,
   getCustomQuestions,
@@ -11,6 +12,10 @@ import {
   deleteSelectedQuestion,
 } from '@/lib/firebase/firestore';
 import type { CustomQuestion, SelectedQuestion } from '@/lib/types';
+
+// Free users can add up to 25 questions, premium users unlimited (up to 100 total)
+const FREE_QUESTION_LIMIT = 25;
+const MAX_TOTAL_QUESTIONS = 100;
 
 export interface CustomQuestionItem {
   id: string;
@@ -28,6 +33,7 @@ export interface SelectedQuestionItem {
 
 export function useCustomQuestions(parentId: string) {
   const { user } = useAuth();
+  const { isPremium, loading: premiumLoading } = usePremiumStatus();
   const [customQuestions, setCustomQuestions] = useState<CustomQuestionItem[]>([]);
   const [selectedQuestions, setSelectedQuestions] = useState<SelectedQuestionItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -213,14 +219,15 @@ export function useCustomQuestions(parentId: string) {
   // Get total count of added questions (custom + selected)
   const totalAddedCount = customQuestions.length + selectedQuestions.length;
 
-  // Max questions allowed (100 total - 25 free = 75 premium questions max)
-  const maxAddedQuestions = 75;
-  const canAddMore = totalAddedCount < maxAddedQuestions;
+  // Determine question limit based on premium status
+  const questionLimit = isPremium ? MAX_TOTAL_QUESTIONS : FREE_QUESTION_LIMIT;
+  const canAddMore = totalAddedCount < questionLimit;
+  const hasReachedFreeLimit = !isPremium && totalAddedCount >= FREE_QUESTION_LIMIT;
 
   return {
     customQuestions,
     selectedQuestions,
-    loading,
+    loading: loading || premiumLoading,
     error,
     addCustom,
     addSelected,
@@ -228,8 +235,11 @@ export function useCustomQuestions(parentId: string) {
     deleteSelected,
     isQuestionSelected,
     totalAddedCount,
-    maxAddedQuestions,
+    questionLimit,
+    freeQuestionLimit: FREE_QUESTION_LIMIT,
     canAddMore,
+    hasReachedFreeLimit,
+    isPremium,
     refetch: fetchQuestions,
   };
 }

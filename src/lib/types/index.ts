@@ -16,7 +16,7 @@ export interface Parent {
   name: string;
   photoUrl: string | null;
   relationship: 'mother' | 'father' | 'other';
-  questionCount: number;
+  questionCount?: number; // Deprecated - now calculated from selectedQuestions + customQuestions
   createdAt: Date;
   updatedAt: Date;
 }

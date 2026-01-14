@@ -2,7 +2,15 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { getParents, createParent, updateParent, deleteParent, getAnswers } from '@/lib/firebase/firestore';
+import {
+  getParents,
+  createParent,
+  updateParent,
+  deleteParent,
+  getAnswers,
+  getSelectedQuestions,
+  getCustomQuestions,
+} from '@/lib/firebase/firestore';
 import { uploadParentPhoto, deleteParentPhoto } from '@/lib/firebase/storage';
 import type { Parent } from '@/lib/types';
 
@@ -29,14 +37,22 @@ export function useParents() {
       setError(null);
       const fetchedParents = await getParents(user.uid);
 
-      // Fetch answer counts for each parent
+      // Fetch answer counts and question counts for each parent
       const parentsWithProgress = await Promise.all(
         fetchedParents.map(async (parent) => {
-          const answers = await getAnswers(user.uid, parent.id);
+          const [answers, selectedQuestions, customQuestions] = await Promise.all([
+            getAnswers(user.uid, parent.id),
+            getSelectedQuestions(user.uid, parent.id),
+            getCustomQuestions(user.uid, parent.id),
+          ]);
+
+          // Total questions = selected curated questions + custom questions
+          const totalQuestions = selectedQuestions.length + customQuestions.length;
+
           return {
             ...parent,
             answeredCount: answers.length,
-            totalQuestions: parent.questionCount || 25,
+            totalQuestions,
           };
         })
       );
@@ -67,7 +83,6 @@ export function useParents() {
         name: data.name,
         relationship: data.relationship,
         photoUrl: null,
-        questionCount: 25,
       });
 
       // Upload photo if provided

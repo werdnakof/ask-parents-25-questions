@@ -6,7 +6,6 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
@@ -27,33 +26,50 @@ export default function SummaryPage() {
   const tCommon = useTranslations('common');
 
   const { user } = useAuth();
-  const { isPremium } = usePremiumStatus();
-  const { questions } = useQuestions();
-  const { customQuestions, loading: customLoading } = useCustomQuestions(parentId);
+  const { getQuestionById } = useQuestions();
+  const { customQuestions, selectedQuestions, loading: customLoading } = useCustomQuestions(parentId);
   const { answers, loading: answersLoading } = useAnswers(parentId);
 
   const [parent, setParent] = useState<Parent | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Merge curated questions with custom questions
-  const allQuestions = useMemo(() => {
-    if (!isPremium) {
-      return questions;
-    }
+  // Build the user's question list from selected + custom questions
+  const userQuestions = useMemo(() => {
+    const questionList: Array<{
+      id: string;
+      text: string;
+      category: 'childhood' | 'family' | 'education' | 'love' | 'parenthood' | 'values' | 'dreams' | 'legacy';
+      isFree: boolean;
+      isCustom: boolean;
+      order: number;
+    }> = [];
 
-    const merged = [...questions];
+    // Add selected curated questions
+    selectedQuestions.forEach((selected) => {
+      const curatedQuestion = getQuestionById(selected.questionId);
+      if (curatedQuestion) {
+        questionList.push({
+          ...curatedQuestion,
+          order: selected.order,
+        });
+      }
+    });
+
+    // Add custom questions
     customQuestions.forEach((customQ) => {
-      merged.push({
+      questionList.push({
         id: customQ.id,
         text: customQ.text,
         category: 'legacy' as const,
         isFree: false,
         isCustom: true,
+        order: customQ.order,
       });
     });
 
-    return merged;
-  }, [questions, customQuestions, isPremium]);
+    // Sort by order
+    return questionList.sort((a, b) => a.order - b.order);
+  }, [selectedQuestions, customQuestions, getQuestionById]);
 
   useEffect(() => {
     async function fetchParent() {
@@ -206,7 +222,7 @@ export default function SummaryPage() {
         {/* Story Summary */}
         <StorySummary
           parentName={parent.name}
-          questions={allQuestions}
+          questions={userQuestions}
           answers={answers}
         />
       </main>

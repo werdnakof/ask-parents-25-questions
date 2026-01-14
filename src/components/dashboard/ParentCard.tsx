@@ -24,7 +24,9 @@ export function ParentCard({ parent }: ParentCardProps) {
   const tParent = useTranslations('parent');
   const locale = useLocale();
 
-  const progressPercentage = Math.round((parent.answeredCount / parent.totalQuestions) * 100);
+  const progressPercentage = parent.totalQuestions > 0
+    ? Math.round((parent.answeredCount / parent.totalQuestions) * 100)
+    : 0;
 
   const getRelationshipLabel = (relationship: string) => {
     switch (relationship) {
@@ -73,14 +75,13 @@ export function ParentCard({ parent }: ParentCardProps) {
 
           {/* Progress */}
           <div className="space-y-1">
-            <div className="flex justify-between text-sm">
+            <div className="text-sm">
               <span className="text-gray-600">
                 {t('questionsAnswered', {
                   count: parent.answeredCount,
                   total: parent.totalQuestions,
                 })}
               </span>
-              <span className="text-gray-500">{progressPercentage}%</span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div

@@ -160,11 +160,16 @@
     "deleteCustom": "Eliminar Pregunta",
     "deleteConfirm": "¿Eliminar esta pregunta personalizada? La respuesta también se eliminará.",
     "maxReached": "Has alcanzado el máximo de 100 preguntas",
-    "questionAdded": "¡Pregunta agregada!"
+    "questionAdded": "¡Pregunta agregada!",
+    "emptyState": {
+      "title": "Aún no hay preguntas",
+      "description": "Haz clic en 'Agregar Pregunta' para elegir de nuestras preguntas seleccionadas o escribe las tuyas."
+    }
   },
   "premium": {
     "unlock": "Desbloquea 75 Preguntas Más",
     "description": "Elige entre nuestras preguntas seleccionadas o escribe las tuyas. Profundiza en temas como carrera, espiritualidad y mensajes para futuras generaciones.",
+    "limitReached": "Has agregado 25 preguntas. Actualiza a Premium para agregar hasta 100 preguntas y escribir tus propias preguntas personalizadas.",
     "price": "$9.99 pago único",
     "cta": "Actualizar Ahora",
     "customFeature": "Además: Agrega tus propias preguntas personalizadas"

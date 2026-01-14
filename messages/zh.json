@@ -160,11 +160,16 @@
     "deleteCustom": "删除问题",
     "deleteConfirm": "删除这个自定义问题？答案也会被删除。",
     "maxReached": "您已达到100个问题的上限",
-    "questionAdded": "问题已添加！"
+    "questionAdded": "问题已添加！",
+    "emptyState": {
+      "title": "还没有添加问题",
+      "description": "点击「添加问题」从我们精选的问题中选择或自己编写。"
+    }
   },
   "premium": {
     "unlock": "解锁75个更多问题",
     "description": "从我们精选的问题中选择或自己编写。深入探讨事业、精神信仰和给后代的寄语等话题。",
+    "limitReached": "您已添加25个问题。升级到高级版可添加多达100个问题并编写您自己的自定义问题。",
     "price": "¥68 一次性付款",
     "cta": "立即升级",
     "customFeature": "额外功能：添加您自己的自定义问题"

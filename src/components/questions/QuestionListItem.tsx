@@ -31,10 +31,10 @@ export function QuestionListItem({
         <span className="flex-shrink-0 w-8 text-center font-medium text-gray-400">
           {questionNumber}
         </span>
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 flex items-center gap-2">
           <p className="text-gray-400 truncate">{questionText}</p>
           {isCustom && (
-            <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-gray-200 text-gray-500 rounded">
+            <span className="flex-shrink-0 px-2 py-0.5 text-xs font-medium bg-gray-200 text-gray-500 rounded">
               {t('customBadge')}
             </span>
           )}
@@ -63,12 +63,12 @@ export function QuestionListItem({
         {questionNumber}
       </span>
 
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 flex items-center gap-2">
         <p className={`truncate ${isAnswered ? 'text-gray-700' : 'text-gray-900'}`}>
           {questionText}
         </p>
         {isCustom && (
-          <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-olive-100 text-olive-700 rounded">
+          <span className="flex-shrink-0 px-2 py-0.5 text-xs font-medium bg-olive-100 text-olive-700 rounded">
             {t('customBadge')}
           </span>
         )}

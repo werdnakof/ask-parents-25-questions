@@ -57,7 +57,6 @@ export function StorySummary({ parentName, questions, answers }: StorySummaryPro
           questionNumber={number}
           questionText={question.text}
           answer={answer.answer}
-          isCustom={question.isCustom}
         />
       ))}
 

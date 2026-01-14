@@ -35,16 +35,16 @@ service cloud.firestore {
           allow read, write: if isOwner(userId);
         }
 
-        // Custom Questions subcollection - PREMIUM ONLY
+        // Custom Questions subcollection - all users can add/delete
+        // (25 question limit for free users enforced in app code)
         match /customQuestions/{questionId} {
-          allow read: if isOwner(userId);
-          allow write: if isPremium(userId);
+          allow read, write: if isOwner(userId);
         }
 
-        // Selected Questions subcollection - PREMIUM ONLY
+        // Selected Questions subcollection - all users can add/delete
+        // (25 question limit for free users enforced in app code)
         match /selectedQuestions/{questionId} {
-          allow read: if isOwner(userId);
-          allow write: if isPremium(userId);
+          allow read, write: if isOwner(userId);
         }
       }
     }

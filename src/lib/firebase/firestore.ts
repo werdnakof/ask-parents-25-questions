@@ -237,4 +237,8 @@ export async function getSelectedQuestions(userId: string, parentId: string): Pr
 export async function deleteSelectedQuestion(userId: string, parentId: string, questionId: string) {
   const selectedRef = doc(db, 'users', userId, 'parents', parentId, 'selectedQuestions', questionId);
   await deleteDoc(selectedRef);
+
+  // Also delete the answer if exists
+  const answerRef = doc(db, 'users', userId, 'parents', parentId, 'answers', questionId);
+  await deleteDoc(answerRef);
 }

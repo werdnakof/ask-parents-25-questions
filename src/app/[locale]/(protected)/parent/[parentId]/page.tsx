@@ -6,7 +6,6 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
 import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
@@ -28,13 +27,16 @@ export default function ParentDetailPage() {
   const tAuth = useTranslations('auth');
 
   const { user } = useAuth();
-  const { isPremium } = usePremiumStatus();
-  const { questions, getAccessibleQuestions } = useQuestions();
+  const { questions, getQuestionById } = useQuestions();
   const { answeredIds, loading: answersLoading } = useAnswers(parentId);
   const {
     customQuestions,
     selectedQuestions,
     loading: customLoading,
+    hasReachedFreeLimit,
+    isPremium,
+    totalAddedCount,
+    freeQuestionLimit,
     refetch: refetchCustomQuestions,
   } = useCustomQuestions(parentId);
 
@@ -42,28 +44,44 @@ export default function ParentDetailPage() {
   const [loading, setLoading] = useState(true);
   const [showAddQuestion, setShowAddQuestion] = useState(false);
 
-  // Merge curated questions with custom questions for premium users
-  const allQuestions = useMemo(() => {
-    if (!isPremium) {
-      return questions;
-    }
+  // Build the question list from user-added questions only (no pre-population)
+  // Combines selectedQuestions (curated) and customQuestions (user-written)
+  const userQuestions = useMemo(() => {
+    const questionList: Array<{
+      id: string;
+      text: string;
+      category: 'childhood' | 'family' | 'education' | 'love' | 'parenthood' | 'values' | 'dreams' | 'legacy';
+      isFree: boolean;
+      isCustom: boolean;
+      order: number;
+    }> = [];
 
-    // Start with the base questions
-    const merged = [...questions];
+    // Add selected curated questions
+    selectedQuestions.forEach((selected) => {
+      const curatedQuestion = getQuestionById(selected.questionId);
+      if (curatedQuestion) {
+        questionList.push({
+          ...curatedQuestion,
+          order: selected.order,
+        });
+      }
+    });
 
-    // Add custom questions at the end
+    // Add custom questions
     customQuestions.forEach((customQ) => {
-      merged.push({
+      questionList.push({
         id: customQ.id,
         text: customQ.text,
-        category: 'legacy' as const, // Custom questions go in legacy category
+        category: 'legacy' as const,
         isFree: false,
         isCustom: true,
+        order: customQ.order,
       });
     });
 
-    return merged;
-  }, [questions, customQuestions, isPremium]);
+    // Sort by order (when they were added)
+    return questionList.sort((a, b) => a.order - b.order);
+  }, [selectedQuestions, customQuestions, getQuestionById]);
 
   useEffect(() => {
     async function fetchParent() {
@@ -130,8 +148,6 @@ export default function ParentDetailPage() {
       </div>
     );
   }
-
-  const accessibleQuestions = getAccessibleQuestions();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -216,35 +232,40 @@ export default function ParentDetailPage() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-900">
             {tParent('questions')}
+            {totalAddedCount > 0 && (
+              <span className="ml-2 text-sm font-normal text-gray-500">
+                ({totalAddedCount}{!isPremium && `/${freeQuestionLimit}`})
+              </span>
+            )}
           </h2>
-          {/* Add Question button - only visible for premium users */}
-          {isPremium && (
-            <button
-              onClick={() => setShowAddQuestion(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-olive-600 bg-olive-50 hover:bg-olive-100 rounded-lg transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-              {tParent('addQuestion')}
-            </button>
-          )}
+          {/* Add Question button - visible for all users */}
+          <button
+            onClick={() => setShowAddQuestion(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-olive-600 bg-olive-50 hover:bg-olive-100 rounded-lg transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            {tParent('addQuestion')}
+          </button>
         </div>
 
         {/* Question List */}
         <QuestionList
           parentId={parentId}
-          questions={allQuestions}
+          questions={userQuestions}
           answeredIds={answeredIds}
           isPremium={isPremium}
+          hasReachedFreeLimit={hasReachedFreeLimit}
         />
 
-        {/* Add Question Modal (Premium only) */}
+        {/* Add Question Modal */}
         <AddQuestionModal
           parentId={parentId}
           isOpen={showAddQuestion}
           onClose={() => setShowAddQuestion(false)}
           onQuestionAdded={refetchCustomQuestions}
+          hasReachedFreeLimit={hasReachedFreeLimit}
         />
       </main>
     </div>

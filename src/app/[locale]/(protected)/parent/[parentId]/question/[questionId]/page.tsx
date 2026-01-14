@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
 import { QuestionDetail } from '@/components/questions/QuestionDetail';
-import { UpgradePrompt } from '@/components/questions/UpgradePrompt';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { signOut } from '@/lib/firebase/auth';
 
@@ -22,75 +20,89 @@ export default function QuestionDetailPage() {
   const questionId = params.questionId as string;
 
   const t = useTranslations('questions');
+  const tCommon = useTranslations('common');
   const tAuth = useTranslations('auth');
 
   useAuth(); // Auth check handled by layout
-  const { isPremium } = usePremiumStatus();
-  const { questions, canAccessQuestion, freeQuestionCount } = useQuestions();
-  const { customQuestions, loading: customLoading } = useCustomQuestions(parentId);
+  const { questions, getQuestionById } = useQuestions();
+  const {
+    customQuestions,
+    selectedQuestions,
+    deleteCustom,
+    deleteSelected,
+    loading: customLoading,
+  } = useCustomQuestions(parentId);
   const { getAnswerForQuestion, saveQuestionAnswer, loading: answersLoading } = useAnswers(parentId);
 
-  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  // Merge curated questions with custom questions for premium users
-  const allQuestions = useMemo(() => {
-    if (!isPremium) {
-      return questions;
-    }
+  // Build the user's question list from selected + custom questions (same as parent page)
+  const userQuestions = useMemo(() => {
+    const questionList: Array<{
+      id: string;
+      text: string;
+      category: 'childhood' | 'family' | 'education' | 'love' | 'parenthood' | 'values' | 'dreams' | 'legacy';
+      isFree: boolean;
+      isCustom: boolean;
+      order: number;
+    }> = [];
 
-    const merged = [...questions];
+    // Add selected curated questions
+    selectedQuestions.forEach((selected) => {
+      const curatedQuestion = getQuestionById(selected.questionId);
+      if (curatedQuestion) {
+        questionList.push({
+          ...curatedQuestion,
+          order: selected.order,
+        });
+      }
+    });
+
+    // Add custom questions
     customQuestions.forEach((customQ) => {
-      merged.push({
+      questionList.push({
         id: customQ.id,
         text: customQ.text,
         category: 'legacy' as const,
         isFree: false,
         isCustom: true,
+        order: customQ.order,
       });
     });
 
-    return merged;
-  }, [questions, customQuestions, isPremium]);
+    // Sort by order
+    return questionList.sort((a, b) => a.order - b.order);
+  }, [selectedQuestions, customQuestions, getQuestionById]);
 
-  // Get accessible questions based on premium status
-  const accessibleQuestions = useMemo(() => {
-    if (isPremium) {
-      return allQuestions;
-    }
-    return allQuestions.filter(q => q.isFree);
-  }, [allQuestions, isPremium]);
-
-  // Find current question
+  // Find current question in user's list
   const currentQuestion = useMemo(() => {
-    return allQuestions.find(q => q.id === questionId);
-  }, [allQuestions, questionId]);
+    return userQuestions.find(q => q.id === questionId);
+  }, [userQuestions, questionId]);
 
   // Calculate question number and navigation
   const questionIndex = useMemo(() => {
-    return accessibleQuestions.findIndex(q => q.id === questionId);
-  }, [accessibleQuestions, questionId]);
+    return userQuestions.findIndex(q => q.id === questionId);
+  }, [userQuestions, questionId]);
 
   const questionNumber = questionIndex + 1;
-  const totalQuestions = accessibleQuestions.length;
+  const totalQuestions = userQuestions.length;
 
   // Get prev/next question IDs
-  const prevQuestionId = questionIndex > 0 ? accessibleQuestions[questionIndex - 1]?.id : null;
-  const nextQuestionId = questionIndex < accessibleQuestions.length - 1
-    ? accessibleQuestions[questionIndex + 1]?.id
+  const prevQuestionId = questionIndex > 0 ? userQuestions[questionIndex - 1]?.id : null;
+  const nextQuestionId = questionIndex < userQuestions.length - 1
+    ? userQuestions[questionIndex + 1]?.id
     : null;
-
-  // Check if next question is blocked (on question 25 for free users)
-  const isOnLastFreeQuestion = !isPremium && questionId === `q${freeQuestionCount}`;
-  const isNextBlocked = isOnLastFreeQuestion && !isPremium;
 
   // Get current answer
   const currentAnswer = getAnswerForQuestion(questionId);
 
-  // Check if user can access this question (including custom questions for premium users)
-  const isCustomQuestion = questionId.startsWith('custom_');
-  const canAccess = isCustomQuestion ? isPremium : canAccessQuestion(questionId);
+  // Check if user can access this question (must be in their selectedQuestions or customQuestions)
+  const canAccess = useMemo(() => {
+    return userQuestions.some(q => q.id === questionId);
+  }, [userQuestions, questionId]);
 
-  // Redirect if user can't access this question
+  // Redirect if user can't access this question (not in their list)
   useEffect(() => {
     if (!answersLoading && !customLoading && !canAccess) {
       router.push(`/${locale}/parent/${parentId}`);
@@ -109,9 +121,26 @@ export default function QuestionDetailPage() {
     );
   }, [questionId, currentQuestion, locale, saveQuestionAnswer]);
 
-  const handleNextBlocked = useCallback(() => {
-    setShowUpgradePrompt(true);
-  }, []);
+  const handleDeleteQuestion = useCallback(async () => {
+    if (!currentQuestion) return;
+
+    setIsDeleting(true);
+    try {
+      // Delete from the appropriate collection (also deletes the answer)
+      if (currentQuestion.isCustom) {
+        await deleteCustom(questionId);
+      } else {
+        await deleteSelected(questionId);
+      }
+
+      // Redirect to parent page
+      router.push(`/${locale}/parent/${parentId}`);
+    } catch (error) {
+      console.error('Error deleting question:', error);
+      setIsDeleting(false);
+      setShowDeleteConfirm(false);
+    }
+  }, [currentQuestion, questionId, deleteCustom, deleteSelected, router, locale, parentId]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -160,15 +189,28 @@ export default function QuestionDetailPage() {
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8">
         {/* Back to Questions Link */}
-        <Link
-          href={`/${locale}/parent/${parentId}`}
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          {t('backToList')}
-        </Link>
+        <div className="flex items-center justify-between mb-6">
+          <Link
+            href={`/${locale}/parent/${parentId}`}
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            {t('backToList')}
+          </Link>
+
+          {/* Delete Button */}
+          <button
+            onClick={() => setShowDeleteConfirm(true)}
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            {t('deleteCustom')}
+          </button>
+        </div>
 
         {/* Question Detail */}
         <QuestionDetail
@@ -180,16 +222,38 @@ export default function QuestionDetailPage() {
           prevQuestionId={prevQuestionId}
           nextQuestionId={nextQuestionId}
           onSaveAnswer={handleSaveAnswer}
-          isNextBlocked={isNextBlocked}
-          onNextBlocked={handleNextBlocked}
-        />
-
-        {/* Upgrade Prompt Modal */}
-        <UpgradePrompt
-          isOpen={showUpgradePrompt}
-          onClose={() => setShowUpgradePrompt(false)}
         />
       </main>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              {t('deleteCustom')}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              {t('deleteConfirm')}
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                disabled={isDeleting}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-50"
+              >
+                {tCommon('cancel')}
+              </button>
+              <button
+                onClick={handleDeleteQuestion}
+                disabled={isDeleting}
+                className="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors disabled:opacity-50"
+              >
+                {isDeleting ? '...' : t('deleteCustom')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

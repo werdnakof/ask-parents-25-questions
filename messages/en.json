@@ -160,11 +160,16 @@
     "deleteCustom": "Delete Question",
     "deleteConfirm": "Delete this custom question? The answer will also be deleted.",
     "maxReached": "You've reached the maximum of 100 questions",
-    "questionAdded": "Question added!"
+    "questionAdded": "Question added!",
+    "emptyState": {
+      "title": "No questions yet",
+      "description": "Click 'Add Question' to choose from our curated questions or write your own."
+    }
   },
   "premium": {
     "unlock": "Unlock 75 More Questions",
     "description": "Choose from our curated questions or write your own. Go deeper with topics like career, spirituality, and messages to future generations.",
+    "limitReached": "You've added 25 questions. Upgrade to Premium to add up to 100 questions and write your own custom questions.",
     "price": "$9.99 one-time",
     "cta": "Upgrade Now",
     "customFeature": "Plus: Add your own custom questions"

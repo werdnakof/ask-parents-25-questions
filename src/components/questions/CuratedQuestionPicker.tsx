@@ -16,23 +16,18 @@ export function CuratedQuestionPicker({
   canAddMore,
 }: CuratedQuestionPickerProps) {
   const t = useTranslations('questions');
-  const { questions, categories, getPremiumQuestions } = useQuestions();
+  const { questions, categories } = useQuestions();
 
   const [selectedCategory, setSelectedCategory] = useState<QuestionCategory | 'all'>('all');
   const [addingId, setAddingId] = useState<string | null>(null);
 
-  // Get premium questions (26-100)
-  const premiumQuestions = useMemo(() => {
-    return getPremiumQuestions();
-  }, [getPremiumQuestions]);
-
-  // Filter by category
+  // Filter by category - show all curated questions (users add what they want)
   const filteredQuestions = useMemo(() => {
     if (selectedCategory === 'all') {
-      return premiumQuestions;
+      return questions;
     }
-    return premiumQuestions.filter((q) => q.category === selectedCategory);
-  }, [premiumQuestions, selectedCategory]);
+    return questions.filter((q) => q.category === selectedCategory);
+  }, [questions, selectedCategory]);
 
   const handleSelect = async (questionId: string) => {
     if (!canAddMore || isSelected(questionId)) return;
