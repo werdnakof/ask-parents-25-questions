@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { SupportFooter } from '@/components/ui/SupportFooter';
 import { ParentCard } from '@/components/dashboard/ParentCard';
-import { Button } from '@/components/ui';
+import { Button, DashboardSkeleton, ErrorState } from '@/components/ui';
 import { useParents } from '@/lib/hooks/useParents';
 
 export default function DashboardPage() {
@@ -64,14 +64,20 @@ export default function DashboardPage() {
         </div>
 
         {/* Loading State */}
-        {isLoading && (
-          <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-olive-500"></div>
-          </div>
+        {isLoading && <DashboardSkeleton />}
+
+        {/* Error State */}
+        {!isLoading && error && (
+          <ErrorState
+            title={t('errorTitle') || 'Failed to load parents'}
+            message={t('errorMessage') || 'There was a problem loading your parents. Please try again.'}
+            onRetry={() => window.location.reload()}
+            retryLabel={t('retry') || 'Try Again'}
+          />
         )}
 
         {/* Empty State */}
-        {!isLoading && parents.length === 0 && (
+        {!isLoading && !error && parents.length === 0 && (
           <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
             <div className="w-16 h-16 bg-olive-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg className="w-8 h-8 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,7 +104,7 @@ export default function DashboardPage() {
         )}
 
         {/* Parent Cards Grid */}
-        {!isLoading && parents.length > 0 && (
+        {!isLoading && !error && parents.length > 0 && (
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
             {parents.map((parent) => (
               <ParentCard key={parent.id} parent={parent} />

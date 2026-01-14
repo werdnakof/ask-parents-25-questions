@@ -11,7 +11,7 @@ import { useAnswers } from '@/lib/hooks/useAnswers';
 import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { getParent } from '@/lib/firebase/firestore';
 import { QuestionList, AddQuestionModal } from '@/components/questions';
-import { Button } from '@/components/ui';
+import { Button, ParentHeaderSkeleton, QuestionListSkeleton, ErrorState } from '@/components/ui';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { signOut } from '@/lib/firebase/auth';
 import type { Parent } from '@/lib/types';
@@ -116,12 +116,26 @@ export default function ParentDetailPage() {
             <Link href={`/${locale}/dashboard`} className="text-xl font-semibold text-gray-900">
               Parent Stories
             </Link>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-8">
-          <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-olive-500"></div>
+          {/* Back Link Skeleton */}
+          <div className="h-5 w-16 bg-gray-200 rounded animate-pulse mb-6" />
+
+          {/* Parent Header Skeleton */}
+          <ParentHeaderSkeleton />
+
+          {/* Questions Section Header Skeleton */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="h-6 w-32 bg-gray-200 rounded animate-pulse" />
+            <div className="h-10 w-32 bg-gray-200 rounded-lg animate-pulse" />
           </div>
+
+          {/* Question List Skeleton */}
+          <QuestionListSkeleton count={5} />
         </main>
       </div>
     );
@@ -131,19 +145,22 @@ export default function ParentDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
             <Link href={`/${locale}/dashboard`} className="text-xl font-semibold text-gray-900">
               Parent Stories
             </Link>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-8">
-          <div className="text-center py-12">
-            <p className="text-gray-600">Parent not found</p>
-            <Link href={`/${locale}/dashboard`} className="text-olive-600 hover:underline mt-4 inline-block">
-              {t('common.back')} to Dashboard
-            </Link>
-          </div>
+          <ErrorState
+            title={tParent('notFound') || 'Parent not found'}
+            message={tParent('notFoundMessage') || 'The parent you are looking for does not exist or has been deleted.'}
+            onRetry={() => router.push(`/${locale}/dashboard`)}
+            retryLabel={t('common.back') + ' to Dashboard'}
+          />
         </main>
       </div>
     );

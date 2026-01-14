@@ -10,6 +10,7 @@ import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
 import { QuestionDetail } from '@/components/questions/QuestionDetail';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { QuestionDetailSkeleton } from '@/components/ui';
 import { signOut } from '@/lib/firebase/auth';
 
 export default function QuestionDetailPage() {
@@ -151,16 +152,24 @@ export default function QuestionDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
             <Link href={`/${locale}/dashboard`} className="text-xl font-semibold text-gray-900">
               Parent Stories
             </Link>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-8">
-          <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-olive-500"></div>
+          {/* Back to Questions Link Skeleton */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="h-5 w-32 bg-gray-200 rounded animate-pulse" />
+            <div className="h-8 w-28 bg-gray-200 rounded-lg animate-pulse" />
           </div>
+
+          {/* Question Detail Skeleton */}
+          <QuestionDetailSkeleton />
         </main>
       </div>
     );
