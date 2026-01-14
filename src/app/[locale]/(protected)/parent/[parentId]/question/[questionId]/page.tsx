@@ -9,6 +9,7 @@ import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
 import { QuestionDetail } from '@/components/questions/QuestionDetail';
+import { UpgradePrompt } from '@/components/questions/UpgradePrompt';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { signOut } from '@/lib/firebase/auth';
 
@@ -21,9 +22,8 @@ export default function QuestionDetailPage() {
 
   const t = useTranslations('questions');
   const tAuth = useTranslations('auth');
-  const tPremium = useTranslations('premium');
 
-  const { user } = useAuth();
+  useAuth(); // Auth check handled by layout
   const { isPremium } = usePremiumStatus();
   const { questions, canAccessQuestion, freeQuestionCount } = useQuestions();
   const { getAnswerForQuestion, saveQuestionAnswer, loading: answersLoading } = useAnswers(parentId);
@@ -162,41 +162,10 @@ export default function QuestionDetailPage() {
         />
 
         {/* Upgrade Prompt Modal */}
-        {showUpgradePrompt && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-            <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-olive-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {tPremium('unlock')}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {tPremium('description')}
-                </p>
-                <p className="text-olive-700 font-medium text-sm mb-6">
-                  {tPremium('customFeature')}
-                </p>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => setShowUpgradePrompt(false)}
-                    className="flex-1 px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg transition-colors"
-                  >
-                    Maybe later
-                  </button>
-                  <button
-                    className="flex-1 px-4 py-2 bg-olive-500 hover:bg-olive-600 text-white font-medium rounded-lg transition-colors"
-                  >
-                    {tPremium('cta')}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <UpgradePrompt
+          isOpen={showUpgradePrompt}
+          onClose={() => setShowUpgradePrompt(false)}
+        />
       </main>
     </div>
   );

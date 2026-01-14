@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { getStripe } from '@/lib/stripe/client';
 
 interface UpgradePromptProps {
   isOpen: boolean;
@@ -18,14 +17,21 @@ export function UpgradePrompt({ isOpen, onClose }: UpgradePromptProps) {
   const [error, setError] = useState<string | null>(null);
 
   const handleUpgrade = async () => {
-    if (!user) return;
+    if (!user) {
+      console.error('No user found - cannot upgrade');
+      setError('Please sign in to upgrade');
+      return;
+    }
 
     try {
       setLoading(true);
       setError(null);
 
+      console.log('Starting checkout for user:', user.uid);
+
       // Get the user's ID token
       const idToken = await user.getIdToken();
+      console.log('Got ID token, calling checkout API...');
 
       // Create checkout session
       const response = await fetch('/api/stripe/create-checkout', {
@@ -37,16 +43,21 @@ export function UpgradePrompt({ isOpen, onClose }: UpgradePromptProps) {
         body: JSON.stringify({ locale }),
       });
 
+      const data = await response.json();
+      console.log('Checkout API response:', response.status, data);
+
       if (!response.ok) {
-        const data = await response.json();
         throw new Error(data.error || 'Failed to create checkout session');
       }
 
-      const { sessionUrl } = await response.json();
+      const { sessionUrl } = data;
 
       // Redirect to Stripe Checkout
       if (sessionUrl) {
+        console.log('Redirecting to Stripe:', sessionUrl);
         window.location.href = sessionUrl;
+      } else {
+        throw new Error('No session URL returned');
       }
     } catch (err) {
       console.error('Error starting checkout:', err);

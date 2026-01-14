@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import Stripe from 'stripe';
 import { getStripeServer } from '@/lib/stripe/server';
-import { updateUser } from '@/lib/firebase/firestore';
+import { adminDb } from '@/lib/firebase/admin';
 
 // Disable body parsing - we need the raw body for signature verification
 export const runtime = 'nodejs';
@@ -48,8 +48,8 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ error: 'Missing user ID' }, { status: 400 });
         }
 
-        // Update user's premium status in Firestore
-        await updateUser(firebaseUserId, {
+        // Update user's premium status in Firestore using Admin SDK
+        await adminDb.collection('users').doc(firebaseUserId).update({
           isPremium: true,
         });
 

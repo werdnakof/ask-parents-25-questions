@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripeServer, PREMIUM_PRICE_ID, APP_URL } from '@/lib/stripe/server';
-import { getUser, updateUser } from '@/lib/firebase/firestore';
-import { adminAuth } from '@/lib/firebase/admin';
+import { adminAuth, adminDb } from '@/lib/firebase/admin';
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,33 +16,36 @@ export async function POST(request: NextRequest) {
     const decodedToken = await adminAuth.verifyIdToken(idToken);
     const userId = decodedToken.uid;
 
-    // Get user data
-    const user = await getUser(userId);
-    if (!user) {
+    // Get user data using Admin SDK
+    const userDoc = await adminDb.collection('users').doc(userId).get();
+    if (!userDoc.exists) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
+    const userData = userDoc.data()!;
 
     // Check if user is already premium
-    if (user.isPremium) {
+    if (userData.isPremium) {
       return NextResponse.json({ error: 'User is already premium' }, { status: 400 });
     }
 
     // Get or create Stripe customer
     const stripe = getStripeServer();
-    let customerId = user.stripeCustomerId;
+    let customerId = userData.stripeCustomerId as string | undefined;
 
     if (!customerId) {
       const customer = await stripe.customers.create({
-        email: user.email,
-        name: user.displayName,
+        email: userData.email as string,
+        name: userData.displayName as string,
         metadata: {
           firebaseUserId: userId,
         },
       });
       customerId = customer.id;
 
-      // Save Stripe customer ID to user document
-      await updateUser(userId, { stripeCustomerId: customerId });
+      // Save Stripe customer ID to user document using Admin SDK
+      await adminDb.collection('users').doc(userId).update({
+        stripeCustomerId: customerId,
+      });
     }
 
     // Parse the request body for locale

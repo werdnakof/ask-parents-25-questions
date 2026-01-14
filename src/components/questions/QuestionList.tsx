@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { QuestionListItem } from './QuestionListItem';
 import { ProgressBar } from './ProgressBar';
+import { UpgradePrompt } from './UpgradePrompt';
 import type { QuestionItem } from '@/lib/hooks/useQuestions';
 
 interface QuestionListProps {
@@ -14,6 +16,7 @@ interface QuestionListProps {
 
 export function QuestionList({ parentId, questions, answeredIds, isPremium }: QuestionListProps) {
   const t = useTranslations('premium');
+  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
   const answeredCount = questions.filter(q => answeredIds.has(q.id)).length;
 
   // Separate free and premium questions
@@ -62,7 +65,10 @@ export function QuestionList({ parentId, questions, answeredIds, isPremium }: Qu
                 <p className="text-olive-700 font-medium text-sm mb-1">
                   {t('customFeature')}
                 </p>
-                <button className="mt-3 px-4 py-2 bg-olive-500 hover:bg-olive-600 text-white font-medium rounded-lg transition-colors">
+                <button
+                  onClick={() => setShowUpgradePrompt(true)}
+                  className="mt-3 px-4 py-2 bg-olive-500 hover:bg-olive-600 text-white font-medium rounded-lg transition-colors"
+                >
                   {t('cta')} - {t('price')}
                 </button>
               </div>
@@ -97,6 +103,12 @@ export function QuestionList({ parentId, questions, answeredIds, isPremium }: Qu
           />
         ))}
       </div>
+
+      {/* Upgrade Prompt Modal */}
+      <UpgradePrompt
+        isOpen={showUpgradePrompt}
+        onClose={() => setShowUpgradePrompt(false)}
+      />
     </div>
   );
 }
