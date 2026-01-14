@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 import { CuratedQuestionPicker } from './CuratedQuestionPicker';
 import { CustomQuestionForm } from './CustomQuestionForm';
 import { UpgradePrompt } from './UpgradePrompt';
@@ -46,16 +47,26 @@ export function AddQuestionModal({
 
   const handleAddCurated = async (questionId: string) => {
     const success = await addSelected(questionId);
-    if (success && onQuestionAdded) {
-      onQuestionAdded();
+    if (success) {
+      toast.success(t('questionAdded'));
+      if (onQuestionAdded) {
+        onQuestionAdded();
+      }
+    } else {
+      toast.error(t('addError'));
     }
     return success;
   };
 
   const handleAddCustom = async (text: string) => {
     const questionId = await addCustom(text);
-    if (questionId && onQuestionAdded) {
-      onQuestionAdded();
+    if (questionId) {
+      toast.success(t('questionAdded'));
+      if (onQuestionAdded) {
+        onQuestionAdded();
+      }
+    } else {
+      toast.error(t('addError'));
     }
     return !!questionId;
   };

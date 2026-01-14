@@ -139,6 +139,8 @@
     "namePlaceholder": "Ingresa su nombre",
     "relationshipLabel": "Relación",
     "addParentButton": "Agregar",
+    "parentAdded": "¡Padre agregado!",
+    "addParentError": "Error al agregar. Por favor, inténtalo de nuevo.",
     "questions": "Preguntas",
     "addQuestion": "Agregar Pregunta"
   },
@@ -161,6 +163,10 @@
     "deleteConfirm": "¿Eliminar esta pregunta personalizada? La respuesta también se eliminará.",
     "maxReached": "Has alcanzado el máximo de 100 preguntas",
     "questionAdded": "¡Pregunta agregada!",
+    "questionDeleted": "Pregunta eliminada",
+    "addError": "Error al agregar pregunta",
+    "deleteError": "Error al eliminar pregunta",
+    "saveError": "Error al guardar respuesta",
     "emptyState": {
       "title": "Aún no hay preguntas",
       "description": "Haz clic en 'Agregar Pregunta' para elegir de nuestras preguntas seleccionadas o escribe las tuyas."

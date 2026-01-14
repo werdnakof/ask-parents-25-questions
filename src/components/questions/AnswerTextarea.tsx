@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 import { useDebounce } from '@/lib/hooks/useDebounce';
 
 type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
@@ -55,8 +56,9 @@ export function AnswerTextarea({
     } catch (err) {
       console.error('Error saving answer:', err);
       setSaveStatus('error');
+      toast.error(t('saveError'));
     }
-  }, [onSave, lastSavedValue]);
+  }, [onSave, lastSavedValue, t]);
 
   // Debounced save function (1 second delay)
   const debouncedSave = useDebounce(performSave, 1000);

@@ -139,6 +139,8 @@
     "namePlaceholder": "输入他们的姓名",
     "relationshipLabel": "关系",
     "addParentButton": "添加",
+    "parentAdded": "已添加！",
+    "addParentError": "添加失败，请重试。",
     "questions": "问题",
     "addQuestion": "添加问题"
   },
@@ -161,6 +163,10 @@
     "deleteConfirm": "删除这个自定义问题？答案也会被删除。",
     "maxReached": "您已达到100个问题的上限",
     "questionAdded": "问题已添加！",
+    "questionDeleted": "问题已删除",
+    "addError": "添加问题失败",
+    "deleteError": "删除问题失败",
+    "saveError": "保存答案失败",
     "emptyState": {
       "title": "还没有添加问题",
       "description": "点击「添加问题」从我们精选的问题中选择或自己编写。"

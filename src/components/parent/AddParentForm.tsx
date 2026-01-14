@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { useParents } from '@/lib/hooks/useParents';
 import { ParentPhotoUpload } from './ParentPhotoUpload';
 import { Button, Input } from '@/components/ui';
@@ -40,10 +41,13 @@ export function AddParentForm() {
         photoFile: photoFile || undefined,
       });
 
+      toast.success(t('parentAdded'));
       router.push(`/${locale}/dashboard`);
     } catch (err) {
       console.error('Error adding parent:', err);
-      setError('Failed to add parent. Please try again.');
+      const errorMessage = t('addParentError');
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

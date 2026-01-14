@@ -8,6 +8,7 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
+import { toast } from 'sonner';
 import { QuestionDetail } from '@/components/questions/QuestionDetail';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { QuestionDetailSkeleton } from '@/components/ui';
@@ -134,14 +135,16 @@ export default function QuestionDetailPage() {
         await deleteSelected(questionId);
       }
 
+      toast.success(t('questionDeleted'));
       // Redirect to parent page
       router.push(`/${locale}/parent/${parentId}`);
     } catch (error) {
       console.error('Error deleting question:', error);
+      toast.error(t('deleteError'));
       setIsDeleting(false);
       setShowDeleteConfirm(false);
     }
-  }, [currentQuestion, questionId, deleteCustom, deleteSelected, router, locale, parentId]);
+  }, [currentQuestion, questionId, deleteCustom, deleteSelected, router, locale, parentId, t]);
 
   const handleSignOut = async () => {
     await signOut();

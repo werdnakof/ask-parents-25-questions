@@ -139,6 +139,8 @@
     "namePlaceholder": "Enter their name",
     "relationshipLabel": "Relationship",
     "addParentButton": "Add Parent",
+    "parentAdded": "Parent added!",
+    "addParentError": "Failed to add parent. Please try again.",
     "questions": "Questions",
     "addQuestion": "Add Question"
   },
@@ -161,6 +163,10 @@
     "deleteConfirm": "Delete this custom question? The answer will also be deleted.",
     "maxReached": "You've reached the maximum of 100 questions",
     "questionAdded": "Question added!",
+    "questionDeleted": "Question deleted",
+    "addError": "Failed to add question",
+    "deleteError": "Failed to delete question",
+    "saveError": "Failed to save answer",
     "emptyState": {
       "title": "No questions yet",
       "description": "Click 'Add Question' to choose from our curated questions or write your own."
