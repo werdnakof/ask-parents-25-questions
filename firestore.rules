@@ -20,6 +20,19 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(userId)).data.isPremium == true;
     }
 
+    // Helper function to get parent's question count
+    function getQuestionCount(userId, parentId) {
+      return get(/databases/$(database)/documents/users/$(userId)/parents/$(parentId)).data.questionCount;
+    }
+
+    // Helper function to check if user can add more questions
+    // Free users: 25 questions max, Premium users: 100 questions max
+    function canAddQuestion(userId, parentId) {
+      let questionCount = getQuestionCount(userId, parentId);
+      let maxQuestions = isPremium(userId) ? 100 : 25;
+      return questionCount < maxQuestions;
+    }
+
     // Users collection
     match /users/{userId} {
       // Users can read and write their own document
@@ -35,16 +48,22 @@ service cloud.firestore {
           allow read, write: if isOwner(userId);
         }
 
-        // Custom Questions subcollection - all users can add/delete
-        // (25 question limit for free users enforced in app code)
+        // Custom Questions subcollection
+        // Free users: 25 questions max, Premium users: 100 questions max
         match /customQuestions/{questionId} {
-          allow read, write: if isOwner(userId);
+          allow read: if isOwner(userId);
+          allow delete: if isOwner(userId);
+          allow create: if isOwner(userId) && canAddQuestion(userId, parentId);
+          allow update: if isOwner(userId);
         }
 
-        // Selected Questions subcollection - all users can add/delete
-        // (25 question limit for free users enforced in app code)
+        // Selected Questions subcollection
+        // Free users: 25 questions max, Premium users: 100 questions max
         match /selectedQuestions/{questionId} {
-          allow read, write: if isOwner(userId);
+          allow read: if isOwner(userId);
+          allow delete: if isOwner(userId);
+          allow create: if isOwner(userId) && canAddQuestion(userId, parentId);
+          allow update: if isOwner(userId);
         }
       }
     }

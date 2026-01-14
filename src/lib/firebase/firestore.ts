@@ -10,6 +10,8 @@ import {
   orderBy,
   serverTimestamp,
   Timestamp,
+  writeBatch,
+  increment,
 } from 'firebase/firestore';
 import { db } from './config';
 import type { User, Parent, Answer, CustomQuestion, SelectedQuestion } from '../types';
@@ -58,7 +60,7 @@ export async function createParent(userId: string, data: Omit<Parent, 'id' | 'cr
 
   await setDoc(parentRef, {
     ...data,
-    questionCount: 25, // Free tier starts with 25 questions
+    questionCount: 0, // Starts with 0, incremented when questions are added
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
@@ -175,14 +177,26 @@ export async function addCustomQuestion(
   text: string,
   order: number
 ) {
-  const questionRef = doc(db, 'users', userId, 'parents', parentId, 'customQuestions', questionId);
+  const batch = writeBatch(db);
 
-  await setDoc(questionRef, {
+  const questionRef = doc(db, 'users', userId, 'parents', parentId, 'customQuestions', questionId);
+  const parentRef = doc(db, 'users', userId, 'parents', parentId);
+
+  // Add the custom question
+  batch.set(questionRef, {
     id: questionId,
     text,
     order,
     createdAt: serverTimestamp(),
   });
+
+  // Increment the parent's questionCount
+  batch.update(parentRef, {
+    questionCount: increment(1),
+    updatedAt: serverTimestamp(),
+  });
+
+  await batch.commit();
 }
 
 export async function getCustomQuestions(userId: string, parentId: string): Promise<CustomQuestion[]> {
@@ -200,24 +214,49 @@ export async function getCustomQuestions(userId: string, parentId: string): Prom
 }
 
 export async function deleteCustomQuestion(userId: string, parentId: string, questionId: string) {
-  const questionRef = doc(db, 'users', userId, 'parents', parentId, 'customQuestions', questionId);
-  await deleteDoc(questionRef);
+  const batch = writeBatch(db);
 
-  // Also delete the answer if exists
+  const questionRef = doc(db, 'users', userId, 'parents', parentId, 'customQuestions', questionId);
+  const parentRef = doc(db, 'users', userId, 'parents', parentId);
   const answerRef = doc(db, 'users', userId, 'parents', parentId, 'answers', questionId);
-  await deleteDoc(answerRef);
+
+  // Delete the custom question
+  batch.delete(questionRef);
+
+  // Delete the answer if exists
+  batch.delete(answerRef);
+
+  // Decrement the parent's questionCount
+  batch.update(parentRef, {
+    questionCount: increment(-1),
+    updatedAt: serverTimestamp(),
+  });
+
+  await batch.commit();
 }
 
 // ============ Selected Question Operations ============
 
 export async function addSelectedQuestion(userId: string, parentId: string, questionId: string, order: number) {
-  const selectedRef = doc(db, 'users', userId, 'parents', parentId, 'selectedQuestions', questionId);
+  const batch = writeBatch(db);
 
-  await setDoc(selectedRef, {
+  const selectedRef = doc(db, 'users', userId, 'parents', parentId, 'selectedQuestions', questionId);
+  const parentRef = doc(db, 'users', userId, 'parents', parentId);
+
+  // Add the selected question
+  batch.set(selectedRef, {
     questionId,
     order,
     addedAt: serverTimestamp(),
   });
+
+  // Increment the parent's questionCount
+  batch.update(parentRef, {
+    questionCount: increment(1),
+    updatedAt: serverTimestamp(),
+  });
+
+  await batch.commit();
 }
 
 export async function getSelectedQuestions(userId: string, parentId: string): Promise<SelectedQuestion[]> {
@@ -235,10 +274,23 @@ export async function getSelectedQuestions(userId: string, parentId: string): Pr
 }
 
 export async function deleteSelectedQuestion(userId: string, parentId: string, questionId: string) {
-  const selectedRef = doc(db, 'users', userId, 'parents', parentId, 'selectedQuestions', questionId);
-  await deleteDoc(selectedRef);
+  const batch = writeBatch(db);
 
-  // Also delete the answer if exists
+  const selectedRef = doc(db, 'users', userId, 'parents', parentId, 'selectedQuestions', questionId);
+  const parentRef = doc(db, 'users', userId, 'parents', parentId);
   const answerRef = doc(db, 'users', userId, 'parents', parentId, 'answers', questionId);
-  await deleteDoc(answerRef);
+
+  // Delete the selected question
+  batch.delete(selectedRef);
+
+  // Delete the answer if exists
+  batch.delete(answerRef);
+
+  // Decrement the parent's questionCount
+  batch.update(parentRef, {
+    questionCount: increment(-1),
+    updatedAt: serverTimestamp(),
+  });
+
+  await batch.commit();
 }
