@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
+import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
 import { QuestionDetail } from '@/components/questions/QuestionDetail';
 import { UpgradePrompt } from '@/components/questions/UpgradePrompt';
@@ -26,22 +27,43 @@ export default function QuestionDetailPage() {
   useAuth(); // Auth check handled by layout
   const { isPremium } = usePremiumStatus();
   const { questions, canAccessQuestion, freeQuestionCount } = useQuestions();
+  const { customQuestions, loading: customLoading } = useCustomQuestions(parentId);
   const { getAnswerForQuestion, saveQuestionAnswer, loading: answersLoading } = useAnswers(parentId);
 
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
 
+  // Merge curated questions with custom questions for premium users
+  const allQuestions = useMemo(() => {
+    if (!isPremium) {
+      return questions;
+    }
+
+    const merged = [...questions];
+    customQuestions.forEach((customQ) => {
+      merged.push({
+        id: customQ.id,
+        text: customQ.text,
+        category: 'legacy' as const,
+        isFree: false,
+        isCustom: true,
+      });
+    });
+
+    return merged;
+  }, [questions, customQuestions, isPremium]);
+
   // Get accessible questions based on premium status
   const accessibleQuestions = useMemo(() => {
     if (isPremium) {
-      return questions;
+      return allQuestions;
     }
-    return questions.filter(q => q.isFree);
-  }, [questions, isPremium]);
+    return allQuestions.filter(q => q.isFree);
+  }, [allQuestions, isPremium]);
 
   // Find current question
   const currentQuestion = useMemo(() => {
-    return questions.find(q => q.id === questionId);
-  }, [questions, questionId]);
+    return allQuestions.find(q => q.id === questionId);
+  }, [allQuestions, questionId]);
 
   // Calculate question number and navigation
   const questionIndex = useMemo(() => {
@@ -64,15 +86,16 @@ export default function QuestionDetailPage() {
   // Get current answer
   const currentAnswer = getAnswerForQuestion(questionId);
 
-  // Check if user can access this question
-  const canAccess = canAccessQuestion(questionId);
+  // Check if user can access this question (including custom questions for premium users)
+  const isCustomQuestion = questionId.startsWith('custom_');
+  const canAccess = isCustomQuestion ? isPremium : canAccessQuestion(questionId);
 
   // Redirect if user can't access this question
   useEffect(() => {
-    if (!answersLoading && !canAccess) {
+    if (!answersLoading && !customLoading && !canAccess) {
       router.push(`/${locale}/parent/${parentId}`);
     }
-  }, [canAccess, answersLoading, router, locale, parentId]);
+  }, [canAccess, answersLoading, customLoading, router, locale, parentId]);
 
   const handleSaveAnswer = useCallback(async (answerText: string) => {
     if (!currentQuestion) return;
@@ -95,7 +118,7 @@ export default function QuestionDetailPage() {
     router.push(`/${locale}`);
   };
 
-  if (!currentQuestion || answersLoading) {
+  if (!currentQuestion || answersLoading || customLoading) {
     return (
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white border-b border-gray-200">
