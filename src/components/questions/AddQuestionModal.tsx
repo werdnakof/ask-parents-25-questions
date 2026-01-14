@@ -117,7 +117,7 @@ export function AddQuestionModal({
 
         {/* Counter */}
         <div className="px-4 py-2 bg-gray-50 text-sm text-gray-600">
-          {totalAddedCount} / {questionLimit} {t('addQuestion').toLowerCase()}s added
+          {totalAddedCount} {t('questionsAdded')}
           {!canAddMore && (
             <span className="text-amber-600 ml-2">({t('maxReached')})</span>
           )}

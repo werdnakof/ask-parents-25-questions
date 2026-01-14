@@ -1,0 +1,331 @@
+{
+  "common": {
+    "appName": "父母故事",
+    "loading": "載入中...",
+    "save": "儲存",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯",
+    "back": "返回",
+    "next": "下一個",
+    "previous": "上一個"
+  },
+  "auth": {
+    "login": "登入",
+    "signup": "註冊",
+    "logout": "登出",
+    "email": "電子郵件",
+    "password": "密碼",
+    "name": "姓名",
+    "confirmPassword": "確認密碼",
+    "forgotPassword": "忘記密碼？",
+    "continueWithGoogle": "使用 Google 登入",
+    "noAccount": "沒有帳號？",
+    "hasAccount": "已有帳號？",
+    "loading": "載入中...",
+    "resetPassword": "重設密碼",
+    "resetPasswordDescription": "輸入您的電子郵件，我們將發送重設密碼的連結。",
+    "sendResetLink": "發送重設連結",
+    "checkEmail": "查看您的電子郵件",
+    "resetEmailSent": "我們已發送密碼重設連結到您的電子郵件。",
+    "backToLogin": "返回登入",
+    "rememberPassword": "記得密碼？"
+  },
+  "landing": {
+    "title": "在故事結束前，了解他們的人生",
+    "subtitle": "在來不及之前，透過有意義的問題記錄父母的人生故事。",
+    "cta": "開始使用",
+    "getStarted": "開始使用",
+    "login": "登入",
+    "freeToStart": "免費開始，無需信用卡。",
+    "howItWorks": {
+      "title": "如何使用",
+      "step1": {
+        "title": "新增父母",
+        "description": "為您的父親、母親或任何您想記錄故事的親人建立檔案。"
+      },
+      "step2": {
+        "title": "提問",
+        "description": "從100個精心設計的問題中選擇，涵蓋童年、事業、愛情和人生感悟。"
+      },
+      "step3": {
+        "title": "保存故事",
+        "description": "記錄他們的回答，為後代保存珍貴的回憶。"
+      }
+    },
+    "sampleQuestions": {
+      "title": "範例問題",
+      "subtitle": "精心設計的問題，幫助您發現從未聽過的回憶和故事。",
+      "q1": "您最早的童年記憶是什麼？",
+      "q2": "您是怎麼認識爸爸/媽媽的？",
+      "q3": "您的第一份工作是什麼？從中學到了什麼？",
+      "q4": "您父母給您的最好建議是什麼？",
+      "q5": "您人生中最自豪的時刻是什麼？",
+      "q6": "如果可以重來，您會做出什麼不同的選擇？",
+      "andMore": "...還有94個問題，涵蓋童年、家庭、事業、愛情和人生智慧。"
+    },
+    "pricing": {
+      "title": "簡單定價",
+      "free": {
+        "name": "免費版",
+        "price": "NT$0",
+        "feature1": "25個精選問題",
+        "feature2": "無限新增父母",
+        "feature3": "自動儲存答案",
+        "cta": "免費開始"
+      },
+      "premium": {
+        "name": "進階版",
+        "price": "NT$299",
+        "oneTime": "一次性付款",
+        "badge": "最超值",
+        "feature1": "全部100個問題",
+        "feature2": "新增自訂問題",
+        "feature3": "優先支援",
+        "feature4": "未來功能免費",
+        "cta": "升級到進階版"
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "q1": {
+        "question": "我的資料是否私密和安全？",
+        "answer": "是的，絕對安全。您的故事是私密的，只有您可以存取。我們使用業界標準加密，絕不與第三方分享您的資料。"
+      },
+      "q2": {
+        "question": "我可以新增多個父母或家人嗎？",
+        "answer": "可以！即使是免費版，您也可以新增無限數量的父母或親人。每個人都有自己的問題和答案集。"
+      },
+      "q3": {
+        "question": "如果我沒有完成所有問題怎麼辦？",
+        "answer": "沒有壓力！您的答案會在輸入時自動儲存。隨時回來繼續之前的內容。"
+      },
+      "q4": {
+        "question": "我可以匯出或列印故事嗎？",
+        "answer": "可以，您可以檢視並列印每位父母所有已回答問題的精美摘要。"
+      },
+      "q5": {
+        "question": "如果我想問自己的問題怎麼辦？",
+        "answer": "進階用戶可以新增自己的自訂問題。這是詢問與您家族歷史相關的特定問題的好方法。"
+      }
+    },
+    "finalCta": {
+      "title": "不要等到來不及",
+      "subtitle": "每一天都是了解塑造您人生的人的新機會。"
+    },
+    "footer": {
+      "rights": "保留所有權利。",
+      "contact": "聯絡我們"
+    }
+  },
+  "dashboard": {
+    "title": "您的父母",
+    "addParent": "新增父母",
+    "emptyStateTitle": "還沒有新增父母",
+    "emptyState": "從新增一位父母開始，記錄他們的故事。",
+    "questionsAnswered": "已回答 {count}/{total} 個問題",
+    "supportLabel": "有問題、回饋或功能建議？",
+    "supportEmail": "askparents25questions@gmail.com"
+  },
+  "parent": {
+    "mother": "母親",
+    "father": "父親",
+    "other": "其他",
+    "addPhoto": "新增照片",
+    "viewStory": "檢視完整故事",
+    "deleteConfirm": "確定要刪除這位父母嗎？所有答案都將遺失。",
+    "addParentTitle": "新增父母",
+    "addParentDescription": "新增您想記錄故事的親人。",
+    "nameLabel": "姓名",
+    "namePlaceholder": "輸入他們的姓名",
+    "relationshipLabel": "關係",
+    "addParentButton": "新增",
+    "parentAdded": "已新增！",
+    "addParentError": "新增失敗，請重試。",
+    "questions": "問題",
+    "addQuestion": "新增問題"
+  },
+  "questions": {
+    "backToList": "返回問題列表",
+    "questionOf": "第 {current}/{total} 個問題",
+    "answered": "已回答",
+    "unanswered": "未回答",
+    "saving": "儲存中...",
+    "saved": "已儲存",
+    "placeholder": "在這裡寫下您的答案...",
+    "progress": "已回答 {count}/{total}",
+    "addQuestion": "新增問題",
+    "ourQuestions": "我們的問題",
+    "writeYourOwn": "自訂問題",
+    "customBadge": "自訂",
+    "customPlaceholder": "寫一個您想問的問題...",
+    "addToList": "新增到列表",
+    "deleteCustom": "刪除問題",
+    "deleteConfirm": "刪除這個自訂問題？答案也會被刪除。",
+    "maxReached": "您已達到100個問題的上限",
+    "questionAdded": "問題已新增！",
+    "questionDeleted": "問題已刪除",
+    "addError": "新增問題失敗",
+    "deleteError": "刪除問題失敗",
+    "saveError": "儲存答案失敗",
+    "emptyState": {
+      "title": "還沒有新增問題",
+      "description": "點擊「新增問題」從我們精選的問題中選擇或自己編寫。"
+    },
+    "adding": "新增中...",
+    "tips": {
+      "title": "寫好問題的技巧：",
+      "tip1": "詢問具體的回憶或事件",
+      "tip2": "加入背景（如「當您像我這麼大的時候...」）",
+      "tip3": "詢問感受，而不僅僅是事實",
+      "tip4": "保持好奇心，提出開放式問題"
+    },
+    "questionsAdded": "個問題已新增"
+  },
+  "premium": {
+    "unlock": "解鎖75個更多問題",
+    "description": "從我們精選的問題中選擇或自己編寫。深入探討事業、精神信仰和給後代的寄語等話題。",
+    "limitReached": "您已新增25個問題。升級到進階版可新增多達100個問題並編寫您自己的自訂問題。",
+    "price": "NT$299 一次性付款",
+    "cta": "立即升級",
+    "customFeature": "額外功能：新增您自己的自訂問題"
+  },
+  "payment": {
+    "successTitle": "付款成功！",
+    "successDescription": "感謝您升級到進階版。現在您可以存取全部100個問題，並可以新增自己的自訂問題。",
+    "unlocked": "您已解鎖：",
+    "feature1": "全部100個精選問題",
+    "feature2": "新增您自己的自訂問題",
+    "redirecting": "{seconds}秒後跳轉到儀表板...",
+    "goToDashboard": "前往儀表板",
+    "cancelledTitle": "付款已取消",
+    "cancelledDescription": "您的付款已取消。您的帳戶未被扣款。",
+    "tryAgainLater": "您可以隨時從問題列表中升級。"
+  },
+  "summary": {
+    "title": "{name}的故事",
+    "noAnswers": "還沒有回答任何問題。",
+    "print": "列印故事",
+    "createdWith": "由"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
+    "es": "Español"
+  },
+  "questions_data": {
+    "categories": {
+      "childhood": "童年與成長",
+      "family": "家庭與親情",
+      "education": "教育與事業",
+      "love": "愛情與婚姻",
+      "parenthood": "為人父母",
+      "values": "人生感悟與價值觀",
+      "dreams": "夢想與遺憾",
+      "legacy": "傳承與寄語"
+    },
+    "questions": {
+      "q1": {"text": "您最早的童年記憶是什麼？", "category": "childhood"},
+      "q2": {"text": "您在哪裡長大？那裡是什麼樣的？", "category": "childhood"},
+      "q3": {"text": "您小時候住的房子是什麼樣的？", "category": "childhood"},
+      "q4": {"text": "您小時候玩什麼遊戲？", "category": "childhood"},
+      "q5": {"text": "您從小最好的朋友是誰？", "category": "childhood"},
+      "q6": {"text": "您小時候最喜歡吃什麼？", "category": "childhood"},
+      "q7": {"text": "您小時候害怕什麼？", "category": "childhood"},
+      "q8": {"text": "您小時候長大後想做什麼？", "category": "childhood"},
+      "q9": {"text": "您在學校最喜歡什麼科目？", "category": "childhood"},
+      "q10": {"text": "您的家庭慶祝哪些節日或傳統？", "category": "childhood"},
+      "q11": {"text": "您童年最快樂的時刻是什麼？", "category": "childhood"},
+      "q12": {"text": "您小時候養過寵物嗎？", "category": "childhood"},
+      "q13": {"text": "您成長的街區是什麼樣的？", "category": "childhood"},
+      "q14": {"text": "您暑假都做些什麼？", "category": "childhood"},
+      "q15": {"text": "您小時候最珍貴的玩具或物品是什麼？", "category": "childhood"},
+      "q16": {"text": "您和父母的關係怎麼樣？", "category": "family"},
+      "q17": {"text": "您對母親最美好的回憶是什麼？", "category": "family"},
+      "q18": {"text": "您對父親最美好的回憶是什麼？", "category": "family"},
+      "q19": {"text": "您有兄弟姐妹嗎？你們的關係怎麼樣？", "category": "family"},
+      "q20": {"text": "您的父母教給您什麼價值觀？", "category": "family"},
+      "q21": {"text": "您父母給您的最好建議是什麼？", "category": "family"},
+      "q22": {"text": "有沒有什麼家庭秘密是您後來才知道的？", "category": "family"},
+      "q23": {"text": "您還保持著哪些家庭傳統？", "category": "family"},
+      "q24": {"text": "您覺得自己最像家裡的誰？", "category": "family"},
+      "q25": {"text": "您了解祖父母的生活嗎？", "category": "family"},
+      "q26": {"text": "您的第一份工作是什麼？", "category": "education"},
+      "q27": {"text": "您是如何選擇職業道路的？", "category": "education"},
+      "q28": {"text": "您最喜歡的老師是誰？為什麼？", "category": "education"},
+      "q29": {"text": "您做過最辛苦的工作是什麼？", "category": "education"},
+      "q30": {"text": "您在事業上最自豪的成就是什麼？", "category": "education"},
+      "q31": {"text": "您上過大學嗎？那段經歷是怎樣的？", "category": "education"},
+      "q32": {"text": "您從第一位老闆那裡學到了什麼？", "category": "education"},
+      "q33": {"text": "什麼技能花了您最長時間學會？", "category": "education"},
+      "q34": {"text": "有沒有一位導師改變了您的人生？", "category": "education"},
+      "q35": {"text": "您在事業上冒過的最大風險是什麼？", "category": "education"},
+      "q36": {"text": "您是如何應對工作中的失敗或挫折的？", "category": "education"},
+      "q37": {"text": "您的理想工作是什麼？實現了嗎？", "category": "education"},
+      "q38": {"text": "如果重來，您會學什麼專業？", "category": "education"},
+      "q39": {"text": "您最自豪的工作成就是什麼？", "category": "education"},
+      "q40": {"text": "關於選擇職業，您有什麼建議？", "category": "education"},
+      "q41": {"text": "您是怎麼認識您的伴侶的？", "category": "love"},
+      "q42": {"text": "是什麼讓您愛上了他/她？", "category": "love"},
+      "q43": {"text": "您的婚禮是怎樣的？", "category": "love"},
+      "q44": {"text": "維持長久關係的秘訣是什麼？", "category": "love"},
+      "q45": {"text": "您的第一次約會是怎樣的？", "category": "love"},
+      "q46": {"text": "您怎麼知道他/她就是對的人？", "category": "love"},
+      "q47": {"text": "您做過最浪漫的事是什麼？", "category": "love"},
+      "q48": {"text": "你們作為夫妻遇到過什麼挑戰？", "category": "love"},
+      "q49": {"text": "您最欣賞伴侶什麼？", "category": "love"},
+      "q50": {"text": "你們戀愛初期有什麼有趣的故事？", "category": "love"},
+      "q51": {"text": "你們是怎麼決定組建家庭的？", "category": "parenthood"},
+      "q52": {"text": "初為父母是什麼感覺？", "category": "parenthood"},
+      "q53": {"text": "當父母最讓您意外的是什麼？", "category": "parenthood"},
+      "q54": {"text": "您對我小時候最美好的回憶是什麼？", "category": "parenthood"},
+      "q55": {"text": "養育孩子最難的是什麼？", "category": "parenthood"},
+      "q56": {"text": "您希望我從您身上學到什麼？", "category": "parenthood"},
+      "q57": {"text": "您最自豪的育兒決定是什麼？", "category": "parenthood"},
+      "q58": {"text": "作為父母，有什麼您希望做得不同的嗎？", "category": "parenthood"},
+      "q59": {"text": "我小時候是什麼樣的？", "category": "parenthood"},
+      "q60": {"text": "我出生時您對我有什麼期望？", "category": "parenthood"},
+      "q61": {"text": "人生教會您最重要的道理是什麼？", "category": "values"},
+      "q62": {"text": "您相信人死後會怎樣？", "category": "values"},
+      "q63": {"text": "信仰或精神生活在您的人生中扮演什麼角色？", "category": "values"},
+      "q64": {"text": "幸福對您意味著什麼？", "category": "values"},
+      "q65": {"text": "您人生中最感激的是什麼？", "category": "values"},
+      "q66": {"text": "哪個歷史事件對您的人生影響最大？", "category": "values"},
+      "q67": {"text": "您做過最勇敢的事是什麼？", "category": "values"},
+      "q68": {"text": "誰對您的人生影響最大？", "category": "values"},
+      "q69": {"text": "您從哪個錯誤中學到最多？", "category": "values"},
+      "q70": {"text": "您如何定義成功？", "category": "values"},
+      "q71": {"text": "您做過最艱難的決定是什麼？", "category": "values"},
+      "q72": {"text": "什麼賦予您的人生意義？", "category": "values"},
+      "q73": {"text": "您是如何度過人生最困難的時期的？", "category": "values"},
+      "q74": {"text": "您認為美好人生的關鍵是什麼？", "category": "values"},
+      "q75": {"text": "有什麼事您從未告訴過任何人？", "category": "values"},
+      "q76": {"text": "您有什麼未能追求的夢想？", "category": "dreams"},
+      "q77": {"text": "如果可以住在世界任何地方，您會選擇哪裡？", "category": "dreams"},
+      "q78": {"text": "您希望有更多時間做什麼？", "category": "dreams"},
+      "q79": {"text": "有什麼您一直想學的東西？", "category": "dreams"},
+      "q80": {"text": "您最大的遺憾是什麼？", "category": "dreams"},
+      "q81": {"text": "如果可以重溫一天，您會選擇哪一天？", "category": "dreams"},
+      "q82": {"text": "如果可以重來，您會有什麼不同的選擇？", "category": "dreams"},
+      "q83": {"text": "您的人生願望清單上有什麼？", "category": "dreams"},
+      "q84": {"text": "您希望曾經經歷過什麼冒險？", "category": "dreams"},
+      "q85": {"text": "您還希望實現什麼成就？", "category": "dreams"},
+      "q86": {"text": "您希望人們記住您什麼？", "category": "legacy"},
+      "q87": {"text": "您想對孫輩說什麼？", "category": "legacy"},
+      "q88": {"text": "您想與後代分享什麼智慧？", "category": "legacy"},
+      "q89": {"text": "有什麼家族故事不應該被遺忘？", "category": "legacy"},
+      "q90": {"text": "有什麼食譜或傳統我們應該傳承下去？", "category": "legacy"},
+      "q91": {"text": "您希望留下什麼樣的遺產？", "category": "legacy"},
+      "q92": {"text": "您最想讓我知道什麼？", "category": "legacy"},
+      "q93": {"text": "有什麼您一直想對我說的嗎？", "category": "legacy"},
+      "q94": {"text": "關於人生，您有什麼建議給我？", "category": "legacy"},
+      "q95": {"text": "您對我的未來有什麼期望？", "category": "legacy"},
+      "q96": {"text": "您希望如何被記住？", "category": "legacy"},
+      "q97": {"text": "人生給您最大的禮物是什麼？", "category": "legacy"},
+      "q98": {"text": "有什麼您想對我說但還沒說的？", "category": "legacy"},
+      "q99": {"text": "我們的家庭讓您感到驕傲的是什麼？", "category": "legacy"},
+      "q100": {"text": "關於您的人生，還有什麼想分享的嗎？", "category": "legacy"}
+    }
+  }
+}

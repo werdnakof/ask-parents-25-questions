@@ -85,7 +85,7 @@ export function CustomQuestionForm({ onSubmit, canAddMore }: CustomQuestionFormP
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
             </svg>
-            Adding...
+            {t('adding')}
           </>
         ) : (
           <>
@@ -99,12 +99,12 @@ export function CustomQuestionForm({ onSubmit, canAddMore }: CustomQuestionFormP
 
       {/* Tips */}
       <div className="bg-gray-50 rounded-lg p-4">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Tips for great questions:</h4>
+        <h4 className="text-sm font-medium text-gray-700 mb-2">{t('tips.title')}</h4>
         <ul className="text-sm text-gray-600 space-y-1">
-          <li>• Ask about specific memories or events</li>
-          <li>• Include context (e.g., "When you were my age...")</li>
-          <li>• Ask about feelings, not just facts</li>
-          <li>• Be curious and open-ended</li>
+          <li>• {t('tips.tip1')}</li>
+          <li>• {t('tips.tip2')}</li>
+          <li>• {t('tips.tip3')}</li>
+          <li>• {t('tips.tip4')}</li>
         </ul>
       </div>
     </form>

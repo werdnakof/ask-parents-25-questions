@@ -14,6 +14,7 @@ interface StorySummaryProps {
 
 export function StorySummary({ parentName, questions, answers }: StorySummaryProps) {
   const t = useTranslations('summary');
+  const tCommon = useTranslations('common');
 
   // Create a map of answers by questionId for quick lookup
   const answersMap = useMemo(() => {
@@ -63,7 +64,7 @@ export function StorySummary({ parentName, questions, answers }: StorySummaryPro
       {/* Footer - for print */}
       <div className="hidden print:block text-center mt-8 pt-4 border-t border-gray-200">
         <p className="text-sm text-gray-500">
-          Created with Parent Stories • {new Date().toLocaleDateString()}
+          {t('createdWith')} {tCommon('appName')} • {new Date().toLocaleDateString()}
         </p>
       </div>
     </div>

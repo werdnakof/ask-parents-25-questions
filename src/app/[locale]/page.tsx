@@ -11,6 +11,7 @@ export default async function Home({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('landing');
+  const tCommon = await getTranslations('common');
 
   return (
     <>
@@ -19,7 +20,7 @@ export default async function Home({ params }: Props) {
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <span className="text-lg sm:text-xl font-semibold text-gray-900">Parent Stories</span>
+            <span className="text-lg sm:text-xl font-semibold text-gray-900">{tCommon('appName')}</span>
             <div className="flex items-center gap-2 sm:gap-4">
               <LanguageSwitcher />
               <Link
@@ -215,7 +216,7 @@ export default async function Home({ params }: Props) {
         <footer className="py-8 px-4 border-t border-gray-200">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Parent Stories. {t('footer.rights')}
+              © {new Date().getFullYear()} {tCommon('appName')}. {t('footer.rights')}
             </p>
             <div className="flex items-center gap-6">
               <a href="mailto:askparents25questions@gmail.com" className="text-sm text-gray-500 hover:text-gray-700">

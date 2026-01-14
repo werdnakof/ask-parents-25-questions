@@ -1,5 +1,6 @@
 {
   "common": {
+    "appName": "Parent Stories",
     "loading": "Loading...",
     "save": "Save",
     "cancel": "Cancel",
@@ -170,7 +171,16 @@
     "emptyState": {
       "title": "No questions yet",
       "description": "Click 'Add Question' to choose from our curated questions or write your own."
-    }
+    },
+    "adding": "Adding...",
+    "tips": {
+      "title": "Tips for great questions:",
+      "tip1": "Ask about specific memories or events",
+      "tip2": "Include context (e.g., \"When you were my age...\")",
+      "tip3": "Ask about feelings, not just facts",
+      "tip4": "Be curious and open-ended"
+    },
+    "questionsAdded": "questions added"
   },
   "premium": {
     "unlock": "Unlock 75 More Questions",
@@ -195,11 +205,13 @@
   "summary": {
     "title": "{name}'s Story",
     "noAnswers": "No questions answered yet.",
-    "print": "Print Story"
+    "print": "Print Story",
+    "createdWith": "Created with"
   },
   "languages": {
     "en": "English",
-    "zh": "中文",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
     "es": "Español"
   },
   "questions_data": {

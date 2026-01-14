@@ -1,5 +1,6 @@
 {
   "common": {
+    "appName": "父母故事",
     "loading": "加载中...",
     "save": "保存",
     "cancel": "取消",
@@ -170,7 +171,16 @@
     "emptyState": {
       "title": "还没有添加问题",
       "description": "点击「添加问题」从我们精选的问题中选择或自己编写。"
-    }
+    },
+    "adding": "添加中...",
+    "tips": {
+      "title": "写好问题的技巧：",
+      "tip1": "询问具体的回忆或事件",
+      "tip2": "加入背景（如「当您像我这么大的时候...」）",
+      "tip3": "询问感受，而不仅仅是事实",
+      "tip4": "保持好奇心，提出开放式问题"
+    },
+    "questionsAdded": "个问题已添加"
   },
   "premium": {
     "unlock": "解锁75个更多问题",
@@ -195,11 +205,13 @@
   "summary": {
     "title": "{name}的故事",
     "noAnswers": "还没有回答任何问题。",
-    "print": "打印故事"
+    "print": "打印故事",
+    "createdWith": "由"
   },
   "languages": {
     "en": "English",
-    "zh": "中文",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
     "es": "Español"
   },
   "questions_data": {

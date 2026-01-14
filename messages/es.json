@@ -1,5 +1,6 @@
 {
   "common": {
+    "appName": "Historias de Padres",
     "loading": "Cargando...",
     "save": "Guardar",
     "cancel": "Cancelar",
@@ -170,7 +171,16 @@
     "emptyState": {
       "title": "Aún no hay preguntas",
       "description": "Haz clic en 'Agregar Pregunta' para elegir de nuestras preguntas seleccionadas o escribe las tuyas."
-    }
+    },
+    "adding": "Agregando...",
+    "tips": {
+      "title": "Consejos para buenas preguntas:",
+      "tip1": "Pregunta sobre recuerdos o eventos específicos",
+      "tip2": "Incluye contexto (p. ej., \"Cuando tenías mi edad...\")",
+      "tip3": "Pregunta sobre sentimientos, no solo hechos",
+      "tip4": "Sé curioso y haz preguntas abiertas"
+    },
+    "questionsAdded": "preguntas agregadas"
   },
   "premium": {
     "unlock": "Desbloquea 75 Preguntas Más",
@@ -195,11 +205,13 @@
   "summary": {
     "title": "La Historia de {name}",
     "noAnswers": "Aún no hay preguntas respondidas.",
-    "print": "Imprimir Historia"
+    "print": "Imprimir Historia",
+    "createdWith": "Creado con"
   },
   "languages": {
     "en": "English",
-    "zh": "中文",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
     "es": "Español"
   },
   "questions_data": {

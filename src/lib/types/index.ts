@@ -4,7 +4,7 @@ export interface User {
   email: string;
   displayName: string;
   isPremium: boolean;
-  preferredLocale: 'en' | 'zh' | 'es';
+  preferredLocale: 'en' | 'zh' | 'zh-TW' | 'es';
   stripeCustomerId: string | null;
   createdAt: Date;
   updatedAt: Date;
@@ -46,7 +46,7 @@ export interface SelectedQuestion {
 export interface Answer {
   questionId: string;
   questionText: string;
-  questionTextLocale: 'en' | 'zh' | 'es' | null;
+  questionTextLocale: 'en' | 'zh' | 'zh-TW' | 'es' | null;
   isCustomQuestion: boolean;
   answer: string;
   answeredAt: Date;
@@ -54,4 +54,4 @@ export interface Answer {
 }
 
 // Locale type
-export type Locale = 'en' | 'zh' | 'es';
+export type Locale = 'en' | 'zh' | 'zh-TW' | 'es';
