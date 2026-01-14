@@ -1,4 +1,8 @@
+export { AddQuestionModal } from './AddQuestionModal';
 export { AnswerTextarea } from './AnswerTextarea';
+export { CuratedQuestionPicker } from './CuratedQuestionPicker';
+export { CustomQuestionForm } from './CustomQuestionForm';
+export { DeleteQuestionModal } from './DeleteQuestionModal';
 export { ProgressBar } from './ProgressBar';
 export { QuestionDetail } from './QuestionDetail';
 export { QuestionList } from './QuestionList';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -9,8 +9,9 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { usePremiumStatus } from '@/lib/hooks/usePremiumStatus';
 import { useQuestions } from '@/lib/hooks/useQuestions';
 import { useAnswers } from '@/lib/hooks/useAnswers';
+import { useCustomQuestions } from '@/lib/hooks/useCustomQuestions';
 import { getParent } from '@/lib/firebase/firestore';
-import { QuestionList } from '@/components/questions/QuestionList';
+import { QuestionList, AddQuestionModal } from '@/components/questions';
 import { Button } from '@/components/ui';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { signOut } from '@/lib/firebase/auth';
@@ -30,9 +31,39 @@ export default function ParentDetailPage() {
   const { isPremium } = usePremiumStatus();
   const { questions, getAccessibleQuestions } = useQuestions();
   const { answeredIds, loading: answersLoading } = useAnswers(parentId);
+  const {
+    customQuestions,
+    selectedQuestions,
+    loading: customLoading,
+    refetch: refetchCustomQuestions,
+  } = useCustomQuestions(parentId);
 
   const [parent, setParent] = useState<Parent | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showAddQuestion, setShowAddQuestion] = useState(false);
+
+  // Merge curated questions with custom questions for premium users
+  const allQuestions = useMemo(() => {
+    if (!isPremium) {
+      return questions;
+    }
+
+    // Start with the base questions
+    const merged = [...questions];
+
+    // Add custom questions at the end
+    customQuestions.forEach((customQ) => {
+      merged.push({
+        id: customQ.id,
+        text: customQ.text,
+        category: 'legacy' as const, // Custom questions go in legacy category
+        isFree: false,
+        isCustom: true,
+      });
+    });
+
+    return merged;
+  }, [questions, customQuestions, isPremium]);
 
   useEffect(() => {
     async function fetchParent() {
@@ -59,7 +90,7 @@ export default function ParentDetailPage() {
     router.push(`/${locale}`);
   };
 
-  if (loading || answersLoading) {
+  if (loading || answersLoading || customLoading) {
     return (
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white border-b border-gray-200">
@@ -181,12 +212,39 @@ export default function ParentDetailPage() {
           </div>
         </div>
 
+        {/* Questions Section Header */}
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-gray-900">
+            {tParent('questions')}
+          </h2>
+          {/* Add Question button - only visible for premium users */}
+          {isPremium && (
+            <button
+              onClick={() => setShowAddQuestion(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-olive-600 bg-olive-50 hover:bg-olive-100 rounded-lg transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              {tParent('addQuestion')}
+            </button>
+          )}
+        </div>
+
         {/* Question List */}
         <QuestionList
           parentId={parentId}
-          questions={questions}
+          questions={allQuestions}
           answeredIds={answeredIds}
           isPremium={isPremium}
+        />
+
+        {/* Add Question Modal (Premium only) */}
+        <AddQuestionModal
+          parentId={parentId}
+          isOpen={showAddQuestion}
+          onClose={() => setShowAddQuestion(false)}
+          onQuestionAdded={refetchCustomQuestions}
         />
       </main>
     </div>

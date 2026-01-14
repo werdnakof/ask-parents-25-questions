@@ -138,7 +138,9 @@
     "nameLabel": "Name",
     "namePlaceholder": "Enter their name",
     "relationshipLabel": "Relationship",
-    "addParentButton": "Add Parent"
+    "addParentButton": "Add Parent",
+    "questions": "Questions",
+    "addQuestion": "Add Question"
   },
   "questions": {
     "backToList": "Back to Questions",
